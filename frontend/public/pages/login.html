@@ -1,0 +1,22 @@
+<body>
+    <div id="header"></div>
+
+    <main>
+        <h2>Login</h2>
+
+        <input id="email" placeholder="Email">
+        <input id="password" type="password" placeholder="Contrace&#241;a">
+        <hr>
+
+        <button id="loginBtn">Login</button>
+    </main>
+    <div id="footer"></div>
+
+    <script type="module">
+        import { initLayout } from "../js/main.js";
+        import { initLogin } from "../js/pages/login.js";
+        
+        await initLayout();
+        initLogin();
+    </script>
+</body>

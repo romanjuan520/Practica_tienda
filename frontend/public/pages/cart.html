@@ -1,0 +1,17 @@
+<body>
+    <div id="header"></div>
+
+    <main>
+        <h2>Carrito</h2>
+        <div id="cart"></div>
+    </main>
+
+    <div id="footer"></div>
+    <script type="module">
+        import { initLayout } from "../js/main.js";
+        import { initCart } from "../js/pages/cart.js";
+        
+        await initLayout();
+        initCart();
+    </script>
+</body>

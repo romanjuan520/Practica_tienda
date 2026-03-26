@@ -1,0 +1,22 @@
+<body>
+    <div id="header"></div>
+
+    <main>
+        <h2>Admin Dashboard</h2>
+
+        <input id="name" placeholder="Nombre">
+        <input id="price" placeholder="Precio">
+
+        <hr>
+        <button id="createBtn">Crear producto</button>
+    </main>
+    <div id="footer"></div>
+
+    <script type="module">
+        import { initLayout } from "../js/main.js";
+        import { initAdmin } from "../js/pages/admin.js";
+
+        await initLayout();
+        initAdmin();
+    </script>
+</body>
