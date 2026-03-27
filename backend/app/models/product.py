@@ -1,4 +1,4 @@
-from sqlalchemy import Column, Integer, String, DECIMAL, ForeignKey
+from sqlalchemy import Column, Integer, String, DECIMAL, ForeignKey, Text
 from ..db.base import Base
 
 class Product(Base):
@@ -6,6 +6,8 @@ class Product(Base):
 
     id = Column(Integer, primary_key=True)
     name = Column(String(255),nullable=False)
+    description = Column(Text)
     price = Column(DECIMAL(10,2), nullable=False)
+    stock = Column(Integer, default=0)
     image = Column(String(255))
     category_id = Column(Integer, ForeignKey("category.id"))
