@@ -19,27 +19,23 @@ def create_product(db, name, price, image, category_id, description, stock):
     db.refresh(product)
     return product
 
-def update_product(db, product_id, name, price, image, category_id, description, stock):
+def update_product(db, product_id, product_data):
 
     product = db.query(Product).filter(Product.id == product_id).first()
 
     if not product:
         raise HTTPException(status_code=404, detail="Producto no encontrado")
-
-    product.name = name
-    product.price = price
-    product.image = image
-    product.category_id = category_id
-    product.description = description
-    product.stock = stock
+    
+    for key, value in product_data.item():
+        setattr(product, key, value)
 
     db.commit()
     db.refresh(product)
-
     return product
 
+
 def delete_product(db, product_id):
-    product = db.query(Product).filter(Product.id == product_id). first()
+    product = db.query(Product).filter(Product.id == product_id).first()
     if not product:
         raise HTTPException(status_code=404, detail="Producto no encontrado")
     db.delete(product)

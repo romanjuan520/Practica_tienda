@@ -46,15 +46,10 @@ def update_product(
     admin=Depends(get_current_admin)
     ):
 
-    return product_service.update_product(
+    update_product = product_service.update_product(
         db,
         product_id,
-        product.name,
-        product.price,
-        product.image,
-        product.category_id,
-        product.description,
-        product.stock
+        product.model_dump(exclude_unset=True)
     )
 
 @router.delete("/products/{product_id}")
