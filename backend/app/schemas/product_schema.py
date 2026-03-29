@@ -1,15 +1,17 @@
-from pydantic import BaseModel
+from pydantic import BaseModel, Field, HttpUrl
 
-class ProductCreate(BaseModel):
-    name: str
-    price: float
-    image: str | None = None
+class ProductBase(BaseModel):
+    name: str = Field(min_length=1, max_length=100)
+    price: float = Field(gt=0, description="Precio del producto")
+    image: HttpUrl | None = None
     category_id: int | None = None
     description: str | None = None
-    stock: int
+    stock: int = Field(gt=0)
 
+class ProductCreate(ProductBase):
+    pass
 
-class ProductOut(ProductCreate):
+class ProductOut(ProductBase):
     id: int
 
     class Config:
