@@ -1,4 +1,5 @@
-from fastapi import APIRouter, Depends, HTTPException, Header
+from fastapi import APIRouter, Depends, HTTPException
+from fastapi.security import HTTPBearer, HTTPAuthorizationCredentials
 from sqlalchemy.orm import Session
 from ..db.database import get_db
 from ..services import product_service
@@ -7,12 +8,11 @@ from ..core.security import decode_access_token
 
 
 router = APIRouter(prefix="/admin", tags=["admin"])
+security = HTTPBearer()
 
 # Dependencia para verificar rol admin
-def get_current_admin(authorization: str = Header(...)):
-    if not authorization or not authorization.startswith("Bearer "):
-        raise HTTPException(status_code=401, detail="Token invalido")
-    token = authorization[7:]
+def get_current_admin(credentials: HTTPAuthorizationCredentials = Depends(security)):
+    token =  credentials.credentials
     try:
         payload = decode_access_token(token)
     except:
@@ -28,8 +28,16 @@ def create_product(
     db: Session = Depends(get_db),
     admin = Depends(get_current_admin)
     ):
-    return product_service.create_product(db, product.name, product.price, product.image, product.category_id)
 
+    return product_service.create_product(
+        db,
+        product.name,
+        product.price,
+        product.image,
+        product.category_id,
+        product.description,
+        product.stock
+    )
 @router.put("/products/{product_id}", response_model=ProductOut)
 def update_product(
     product_id: int, 
@@ -38,7 +46,16 @@ def update_product(
     admin=Depends(get_current_admin)
     ):
 
-    return product_service.update_product(db, product_id, product.name, product.price, product.image, product.category_id)
+    return product_service.update_product(
+        db,
+        product_id,
+        product.name,
+        product.price,
+        product.image,
+        product.category_id,
+        product.description,
+        product.stock
+    )
 
 @router.delete("/products/{product_id}")
 def delete_product(product_id: int, 

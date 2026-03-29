@@ -10,4 +10,4 @@ class Product(Base):
     price = Column(DECIMAL(10,2), nullable=False)
     stock = Column(Integer, default=0)
     image = Column(String(255))
-    category_id = Column(Integer, ForeignKey("category.id"))
+    category_id = Column(Integer, ForeignKey("categories.id"))

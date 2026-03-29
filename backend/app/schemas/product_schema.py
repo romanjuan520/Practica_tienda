@@ -5,9 +5,9 @@ class ProductCreate(BaseModel):
     price: float
     image: str | None = None
     category_id: int | None = None
-    description: str
+    description: str | None = None
     stock: int
-    
+
 
 class ProductOut(ProductCreate):
     id: int

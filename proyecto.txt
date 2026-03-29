@@ -1,247 +1,285 @@
 ruta(
 
+PS C:\Users\roman\Documents\auto-estudio\JavaScript\tienda_practica\backend> cd ..
 PS C:\Users\roman\Documents\auto-estudio\JavaScript\tienda_practica> dir -R 
 
 
-    Directorio: C:\Users\roman\Documents\auto
-    -estudio\JavaScript\tienda_practica
+    Directorio: C:\Users\roman\Documents\auto-estudio\JavaScript\tienda_practica
 
 
-Mode                 LastWriteTime     Length 
-----                 -------------     ------ 
-d-----        22/03/2026     15:55
-d-----        22/03/2026     15:57
--a----        25/03/2026     18:03          0 
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+d-----        25/03/2026     23:50                backend
+d-----        22/03/2026     15:57                frontend
+-a----        27/03/2026     15:14             14 proyecto.txt
+-a----        26/03/2026      1:40             81 README.md
 
 
-    Directorio: C:\Users\roman\Documents\auto 
-    -estudio\JavaScript\tienda_practica\backe 
-    nd
+    Directorio: C:\Users\roman\Documents\auto-estudio\JavaScript\tienda_practica\backend
 
 
-Mode                 LastWriteTime     Length 
-----                 -------------     ------ 
-d-----        22/03/2026     16:06
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+d-----        25/03/2026     23:50                app
+-a----        22/03/2026     17:08            154 .env
 
 
-    Directorio: C:\Users\roman\Documents\auto 
-    -estudio\JavaScript\tienda_practica\backe 
-    nd\app
+    Directorio: C:\Users\roman\Documents\auto-estudio\JavaScript\tienda_practica\backend\app
 
 
-Mode                 LastWriteTime     Length 
-----                 -------------     ------ 
-d-----        22/03/2026     16:01
-d-----        22/03/2026     16:04
-d-----        24/03/2026     16:18
-d-----        24/03/2026     16:25
-d-----        22/03/2026     16:02
-d-----        22/03/2026     16:03
--a----        22/03/2026     17:08        154 
--a----        25/03/2026     15:58        267 
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+d-----        25/03/2026     23:51                core
+d-----        25/03/2026     23:42                db
+d-----        25/03/2026     23:51                models
+d-----        25/03/2026     23:42                routers
+d-----        25/03/2026     23:51                schemas
+d-----        25/03/2026     23:51                services
+d-----        25/03/2026     23:42                __pycache__
+-a----        25/03/2026     19:11            471 main.py
 
 
-    Directorio: C:\Users\roman\Documents\auto
-    -estudio\JavaScript\tienda_practica\backe 
-    nd\app\core
+    Directorio: C:\Users\roman\Documents\auto-estudio\JavaScript\tienda_practica\backend\app\core
 
 
-Mode                 LastWriteTime     Length 
-----                 -------------     ------ 
--a----        22/03/2026     16:01          0 
--a----        24/03/2026     15:26        961 
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+d-----        25/03/2026     23:51                __pycache__
+-a----        22/03/2026     16:01              0 config.py
+-a----        24/03/2026     15:26            961 security.py
 
 
-    Directorio: C:\Users\roman\Documents\auto
-    -estudio\JavaScript\tienda_practica\backe 
-    nd\app\db
+    Directorio: C:\Users\roman\Documents\auto-estudio\JavaScript\tienda_practica\backend\app\core\__pycache__
 
 
-Mode                 LastWriteTime     Length 
-----                 -------------     ------ 
--a----        24/03/2026     15:50         74 
--a----        22/03/2026     17:16        689 
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a----        25/03/2026     23:51           1962 security.cpython-313.pyc
 
 
-    Directorio: C:\Users\roman\Documents\auto
-    -estudio\JavaScript\tienda_practica\backe 
-    nd\app\models
+    Directorio: C:\Users\roman\Documents\auto-estudio\JavaScript\tienda_practica\backend\app\db
 
 
-Mode                 LastWriteTime     Length 
-----                 -------------     ------ 
--a----        24/03/2026     16:21        225 
--a----        24/03/2026     15:46        291 
--a----        24/03/2026     15:44        390 
--a----        24/03/2026     15:39        369 
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+d-----        25/03/2026     23:51                __pycache__
+-a----        25/03/2026     18:20             72 base.py
+-a----        25/03/2026     23:48            771 database.py
 
 
-    Directorio: C:\Users\roman\Documents\auto 
-    -estudio\JavaScript\tienda_practica\backe 
-    nd\app\routers
+    Directorio: C:\Users\roman\Documents\auto-estudio\JavaScript\tienda_practica\backend\app\db\__pycache__
 
 
-Mode                 LastWriteTime     Length 
-----                 -------------     ------ 
--a----        25/03/2026     17:59       1783 
--a----        24/03/2026     16:07        897 
--a----        22/03/2026     20:37       1158 
--a----        24/03/2026     16:29        406
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a----        25/03/2026     23:51            270 base.cpython-313.pyc
+-a----        25/03/2026     23:48           1461 database.cpython-313.pyc
 
 
-    Directorio: C:\Users\roman\Documents\auto 
-    -estudio\JavaScript\tienda_practica\backe 
-    nd\app\schemas
+    Directorio: C:\Users\roman\Documents\auto-estudio\JavaScript\tienda_practica\backend\app\models
 
 
-Mode                 LastWriteTime     Length 
-----                 -------------     ------ 
--a----        23/03/2026     16:21        182 
--a----        24/03/2026     15:58        250 
--a----        24/03/2026     15:53        282
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+d-----        26/03/2026     23:15                __pycache__
+-a----        24/03/2026     16:21            225 category.py
+-a----        24/03/2026     15:46            291 order.py
+-a----        25/03/2026     23:33            406 order_item.py
+-a----        26/03/2026     23:15            468 product.py
+-a----        25/03/2026     23:17            365 user.py
 
 
-    Directorio: C:\Users\roman\Documents\auto 
-    -estudio\JavaScript\tienda_practica\backe 
-    nd\app\services
+    Directorio: C:\Users\roman\Documents\auto-estudio\JavaScript\tienda_practica\backend\app\models\__pycache__
 
 
-Mode                 LastWriteTime     Length 
-----                 -------------     ------ 
--a----        22/03/2026     20:40        379 
--a----        24/03/2026     15:36        994 
--a----        24/03/2026     16:13        608 
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a----        25/03/2026     23:51            804 order.cpython-313.pyc
+-a----        25/03/2026     23:51            944 order_item.cpython-313.pyc
+-a----        26/03/2026     23:15           1048 product.cpython-313.pyc
+-a----        25/03/2026     23:51            881 user.cpython-313.pyc
 
 
-    Directorio: C:\Users\roman\Documents\auto 
-    -estudio\JavaScript\tienda_practica\front 
-    end
+    Directorio: C:\Users\roman\Documents\auto-estudio\JavaScript\tienda_practica\backend\app\routers
 
 
-Mode                 LastWriteTime     Length 
-----                 -------------     ------ 
-d-----        22/03/2026     15:57
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+d-----        25/03/2026     23:51                __pycache__
+-a----        25/03/2026     23:27           1782 admin.py
+-a----        24/03/2026     16:07            897 auth.py
+-a----        22/03/2026     20:37           1158 orders.py
+-a----        24/03/2026     16:29            406 products.py
 
 
-    Directorio: C:\Users\roman\Documents\auto 
-    -estudio\JavaScript\tienda_practica\front 
-    end\public
+    Directorio: C:\Users\roman\Documents\auto-estudio\JavaScript\tienda_practica\backend\app\routers\__pycache__
 
 
-Mode                 LastWriteTime     Length 
-----                 -------------     ------ 
-d-----        22/03/2026     15:58
-d-----        22/03/2026     16:00
-d-----        25/03/2026      1:29
-d-----        22/03/2026     16:00
-d-----        22/03/2026     15:58
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a----        25/03/2026     23:51           2744 admin.cpython-313.pyc
+-a----        25/03/2026     23:42           1705 auth.cpython-313.pyc
+-a----        25/03/2026     23:51           1908 orders.cpython-313.pyc
+-a----        25/03/2026     23:51            856 products.cpython-313.pyc
 
 
-    Directorio: C:\Users\roman\Documents\auto 
-    -estudio\JavaScript\tienda_practica\front 
-    end\public\assets
+    Directorio: C:\Users\roman\Documents\auto-estudio\JavaScript\tienda_practica\backend\app\schemas
 
 
-Mode                 LastWriteTime     Length 
-----                 -------------     ------ 
-d-----        22/03/2026     15:58
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+d-----        27/03/2026     15:13                __pycache__
+-a----        26/03/2026     17:25            197 order_schema.py
+-a----        27/03/2026     15:13            320 product_schema.py
+-a----        26/03/2026     17:25            289 user_schema.py
 
 
-    Directorio: C:\Users\roman\Documents\auto 
-    -estudio\JavaScript\tienda_practica\front 
-    end\public\components
+    Directorio: C:\Users\roman\Documents\auto-estudio\JavaScript\tienda_practica\backend\app\schemas\__pycache__
 
 
-Mode                 LastWriteTime     Length 
-----                 -------------     ------ 
--a----        25/03/2026     15:40         44 
--a----        25/03/2026     15:35        274
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a----        26/03/2026     17:25            975 order_schema.cpython-313.pyc
+-a----        27/03/2026     15:13           1162 product_schema.cpython-313.pyc
+-a----        26/03/2026     17:25           1206 user_schema.cpython-313.pyc
 
 
-    Directorio: C:\Users\roman\Documents\auto 
-    -estudio\JavaScript\tienda_practica\front 
-    end\public\js
+    Directorio: C:\Users\roman\Documents\auto-estudio\JavaScript\tienda_practica\backend\app\services
 
 
-Mode                 LastWriteTime     Length 
-----                 -------------     ------ 
-d-----        25/03/2026      1:27
-d-----        25/03/2026      2:20
-d-----        25/03/2026      1:28
-d-----        25/03/2026      1:29
--a----        25/03/2026     15:38        575 
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+d-----        25/03/2026     23:51                __pycache__
+-a----        25/03/2026     23:35            422 order_service.py
+-a----        25/03/2026     23:25           1085 product_service.py
+-a----        25/03/2026     23:17            611 user_service.py
 
 
-    Directorio: C:\Users\roman\Documents\auto 
-    -estudio\JavaScript\tienda_practica\front 
-    end\public\js\core
+    Directorio: C:\Users\roman\Documents\auto-estudio\JavaScript\tienda_practica\backend\app\services\__pycache__
 
 
-Mode                 LastWriteTime     Length 
-----                 -------------     ------ 
--a----        25/03/2026      1:37        544 
--a----        25/03/2026      1:31         47
--a----        25/03/2026      1:38        184 
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a----        25/03/2026     23:51           1097 order_service.cpython-313.pyc
+-a----        25/03/2026     23:51           2076 product_service.cpython-313.pyc
+-a----        25/03/2026     23:51           1291 user_service.cpython-313.pyc
 
 
-    Directorio: C:\Users\roman\Documents\auto 
-    -estudio\JavaScript\tienda_practica\front 
-    end\public\js\pages
+    Directorio: C:\Users\roman\Documents\auto-estudio\JavaScript\tienda_practica\backend\app\__pycache__
 
 
-Mode                 LastWriteTime     Length 
-----                 -------------     ------ 
--a----        25/03/2026      2:38        856 
--a----        25/03/2026      2:24        512
--a----        25/03/2026      1:52        229 
--a----        25/03/2026      2:15        552 
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a----        25/03/2026     23:42            917 main.cpython-313.pyc
 
 
-    Directorio: C:\Users\roman\Documents\auto 
-    -estudio\JavaScript\tienda_practica\front 
-    end\public\js\services
+    Directorio: C:\Users\roman\Documents\auto-estudio\JavaScript\tienda_practica\frontend
 
 
-Mode                 LastWriteTime     Length 
-----                 -------------     ------ 
--a----        25/03/2026      1:42        232
--a----        25/03/2026      1:28          0 
--a----        25/03/2026      1:40        121 
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+d-----        22/03/2026     15:57                public
 
 
-    Directorio: C:\Users\roman\Documents\auto 
-    -estudio\JavaScript\tienda_practica\front 
-    end\public\js\ui
+    Directorio: C:\Users\roman\Documents\auto-estudio\JavaScript\tienda_practica\frontend\public
 
 
-Mode                 LastWriteTime     Length 
-----                 -------------     ------ 
--a----        25/03/2026      1:50        205 
--a----        25/03/2026      1:48        577
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+d-----        22/03/2026     15:58                assets
+d-----        22/03/2026     16:00                components
+d-----        25/03/2026      1:29                js
+d-----        22/03/2026     16:00                pages
+d-----        22/03/2026     15:58                style
 
 
-    Directorio: C:\Users\roman\Documents\auto 
-    -estudio\JavaScript\tienda_practica\front 
-    end\public\pages
+    Directorio: C:\Users\roman\Documents\auto-estudio\JavaScript\tienda_practica\frontend\public\assets
 
 
-Mode                 LastWriteTime     Length 
-----                 -------------     ------ 
--a----        25/03/2026      2:28        515 
--a----        25/03/2026      2:19        372 
--a----        25/03/2026      2:05        375
--a----        25/03/2026      2:13        531 
--a----        22/03/2026     15:59          0 
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+d-----        22/03/2026     15:58                images
 
 
-    Directorio: C:\Users\roman\Documents\auto 
-    -estudio\JavaScript\tienda_practica\front 
-    end\public\style
+    Directorio: C:\Users\roman\Documents\auto-estudio\JavaScript\tienda_practica\frontend\public\components
 
 
-Mode                 LastWriteTime     Length 
-----                 -------------     ------ 
--a----        22/03/2026     15:58          0 
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a----        25/03/2026     15:40             44 footer.html
+-a----        25/03/2026     23:20            275 header.html
+
+
+    Directorio: C:\Users\roman\Documents\auto-estudio\JavaScript\tienda_practica\frontend\public\js
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+d-----        25/03/2026      1:27                core
+d-----        25/03/2026      2:20                pages
+d-----        25/03/2026      1:28                services
+d-----        25/03/2026      1:29                ui
+-a----        25/03/2026     15:38            575 main.js
+
+
+    Directorio: C:\Users\roman\Documents\auto-estudio\JavaScript\tienda_practica\frontend\public\js\core
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a----        25/03/2026      1:37            544 api.js
+-a----        25/03/2026      1:31             47 config.js
+-a----        25/03/2026      1:38            184 storage.js
+
+
+    Directorio: C:\Users\roman\Documents\auto-estudio\JavaScript\tienda_practica\frontend\public\js\pages
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a----        25/03/2026      2:38            856 admin.js
+-a----        25/03/2026      2:24            512 cart.js
+-a----        25/03/2026      1:52            229 home.js
+-a----        25/03/2026      2:15            552 login.js
+
+
+    Directorio: C:\Users\roman\Documents\auto-estudio\JavaScript\tienda_practica\frontend\public\js\services
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a----        25/03/2026      1:42            232 authService.js
+-a----        25/03/2026      1:28              0 orderService.js
+-a----        25/03/2026      1:40            121 productService.js
+
+
+    Directorio: C:\Users\roman\Documents\auto-estudio\JavaScript\tienda_practica\frontend\public\js\ui
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a----        25/03/2026      1:50            205 cartUI.js
+-a----        25/03/2026      1:48            577 productUI.js
+
+
+    Directorio: C:\Users\roman\Documents\auto-estudio\JavaScript\tienda_practica\frontend\public\pages
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a----        25/03/2026      2:28            515 admin.html
+-a----        25/03/2026      2:19            372 cart.html
+-a----        25/03/2026     19:12            375 index.html
+-a----        25/03/2026      2:13            531 login.html
+-a----        22/03/2026     15:59              0 register.html
+
+
+    Directorio: C:\Users\roman\Documents\auto-estudio\JavaScript\tienda_practica\frontend\public\style
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a----        22/03/2026     15:58              0 style.css
 
 
 PS C:\Users\roman\Documents\auto-estudio\JavaScript\tienda_practica>
@@ -286,12 +324,19 @@ create table if not exists order_items(
 	id int auto_increment primary key,
     order_id int not null,
     product_id int not null,
-    quarity int default 1,
+    quantity int default 1,
     price decimal(10,2) not null,
     foreign key (order_id) references orders(id) on delete cascade,
     foreign key (product_id) references products(id) on delete cascade
 );
 
+select * from users;
+
+ALTER TABLE products ADD description TEXT;
+ALTER TABLE products ADD stock INT DEFAULT 0;
+select * from products;
+
+UPDATE users SET role = 'admin' WHERE id = 1;
 
 )
 .env(
@@ -306,23 +351,46 @@ SECRET_KEY=tu_secreto_superseguro
 ACCESS_TOKEN_EXPIRE_MINUTES=60
 
 )
-main.py(
+base.py(
 
-from fastapi import FastAPI
-from app.routers import auth, products , admin, orders
+from sqlalchemy.orm import declarative_base
 
-
-app = FastAPI(title="Tienda de Ropa")
-
-app.include_router(auth.router)
-app.include_router(products.router)
-app.include_router(admin.router)
-app.include_router(orders.router)
+Base = declarative_base()
 
 )
+database.py(
 
+import os
+from sqlalchemy import create_engine
+from sqlalchemy.orm import sessionmaker
+from dotenv import load_dotenv
+
+#Cargar variables del .env
+load_dotenv(os.path.join(os.path.dirname(__file__),"../../.env"))
+
+DB_USER = os.getenv("DB_USER")
+DB_PASSWORD = os.getenv("DB_PASSWORD")
+DB_HOST = os.getenv("DB_HOST")
+DB_PORT = os.getenv("DB_PORT")
+DB_NAME = os.getenv("DB_NAME")
+
+SQLALCHEMY_DATABASE_URL = f"mysql+pymysql://{DB_USER}:{DB_PASSWORD}@{DB_HOST}:{DB_PORT}/{DB_NAME}"
+
+engine = create_engine(SQLALCHEMY_DATABASE_URL, pool_pre_ping=True)
+SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
+
+def get_db():
+    db = SessionLocal()
+    try:
+        yield db
+    finally:
+        db.close()
+
+print("DB_PORT:", DB_PORT)
+
+)
 config.py(vacio)
-security(
+security.py(
 
 import os
 from passlib.context import CryptContext
@@ -357,43 +425,6 @@ def decode_access_token(token: str):
         return None
 
 )
-base.py(
-
-from sqlalchemy.orm import declarative_base
-
-
-Base = declarative_base()
-
-)
-database.py(
-
-import os
-from sqlalchemy import create_engine
-from sqlalchemy.orm import sessionmaker
-from dotenv import load_dotenv
-
-#Cargar variables del .env
-load_dotenv()
-
-DB_USER = os.getenv("DB_USER")
-DB_PASSWORD = os.getenv("DB_PASSWORD")
-DB_HOST = os.getenv("DB_HOST")
-DB_PORT = os.getenv("DB_PORT")
-DB_NAME = os.getenv("DB_NAME")
-
-SQLALCHEMY_DATABASE_URL = f"mysql+pymysql://{DB_USER}:{DB_PASSWORD}@{DB_HOST}:{DB_PORT}/{DB_NAME}"
-
-engine = create_engine(SQLALCHEMY_DATABASE_URL, pool_pre_ping=True)
-SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
-
-def get_db():
-    db = SessionLocal()
-    try:
-        yield db
-    finally:
-        db.close()
-
-)
 category.py(
 
 from sqlalchemy import Column, Integer, String
@@ -404,6 +435,21 @@ class Category(Base):
 
     id = Column(Integer, primary_key=True)
     name = Column(String(100), nullable=False)
+
+)
+order_item.py(
+
+from sqlalchemy import Column, Integer, ForeignKey, DECIMAL
+from ..db.base import Base
+
+class OrderItem(Base):
+    __tablename__ = "order_items"
+
+    id = Column(Integer, primary_key=True)
+    order_id = Column(Integer, ForeignKey("orders.id"))
+    product_id = Column(Integer, ForeignKey("products.id"))
+    quantity = Column(Integer, default=1)
+    price = Column(DECIMAL(10,2), nullable=False)
 
 )
 order.py(
@@ -419,10 +465,9 @@ class Order(Base):
     total = Column(DECIMAL(10,2), nullable=False)
 
 )
-
 product.py(
 
-from sqlalchemy import Column, Integer, String, DECIMAL, ForeignKey
+from sqlalchemy import Column, Integer, String, DECIMAL, ForeignKey, Text
 from ..db.base import Base
 
 class Product(Base):
@@ -430,7 +475,9 @@ class Product(Base):
 
     id = Column(Integer, primary_key=True)
     name = Column(String(255),nullable=False)
+    description = Column(Text)
     price = Column(DECIMAL(10,2), nullable=False)
+    stock = Column(Integer, default=0)
     image = Column(String(255))
     category_id = Column(Integer, ForeignKey("category.id"))
 
@@ -438,7 +485,7 @@ class Product(Base):
 user.py(
 
 from sqlalchemy import Column, Integer,String, Enum
-from ..db.database import Base
+from ..db.base import Base
 
 class User(Base):
     __tablename__ = "users"
@@ -449,6 +496,7 @@ class User(Base):
     role = Column(Enum('cliente', 'admin'), default='cliente')
 
 )
+
 admin.py(
 
 from fastapi import APIRouter, Depends, HTTPException, Header
@@ -462,7 +510,7 @@ from ..core.security import decode_access_token
 router = APIRouter(prefix="/admin", tags=["admin"])
 
 # Dependencia para verificar rol admin
-def get_current_admin(authorization: str = Header(None)):
+def get_current_admin(authorization: str = Header(...)):
     if not authorization or not authorization.startswith("Bearer "):
         raise HTTPException(status_code=401, detail="Token invalido")
     token = authorization[7:]
@@ -583,28 +631,30 @@ class OrderOut(OrderCreate):
     id: int
     user_id: int
 
-class Config:
-    orm_mode = True
+    class Config:
+        from_attributes = True
 
 )
-product_schema(
+product_schema.py(
 
 from pydantic import BaseModel
 
 class ProductCreate(BaseModel):
     name: str
     price: float
-    image: str = ""
+    image: str | None = None
     category_id: int | None = None
+    description: str | None = None
+    stock: int
+
 
 class ProductOut(ProductCreate):
     id: int
 
     class Config:
-        orm_mode = True
+        from_attributes = True
 
 )
-
 user_schema.py(
 
 from pydantic import BaseModel
@@ -623,13 +673,14 @@ class UserOut(BaseModel):
     role: str
 
     class Config:
-        orm_mode = True
+        from_attributes = True
 
 )
 order_service.py(
 
 from ..models.order import Order
 from sqlalchemy.orm import Session
+from ..models.order_item import OrderItem
 
 def create_order(db: Session, user_id: int, total: float):
     order = Order(user_id=user_id, total=total)
@@ -645,6 +696,7 @@ def get_orders_by_user(db: Session, user_id: int):
 product_service.py(
 
 from ..models.product import Product
+from fastapi import HTTPException
 
 def get_products(db):
     return db.query(Product).all()
@@ -659,7 +711,7 @@ def create_product(db, name, price, image, category_id):
 def update_product(db, product_id, name, price, image, category_id):
     product = db.query(Product).filter(Product.id == product_id).first()
     if not product:
-        raise Exception("Producto no encontrado")
+        raise HTTPException(status_code=404, detail="Producto no encontrado")
     product.name = name
     product.price = price
     product.image = image
@@ -671,16 +723,19 @@ def update_product(db, product_id, name, price, image, category_id):
 def delete_product(db, product_id):
     product = db.query(Product).filter(Product.id == product_id). first()
     if not product:
-        raise Exception("Producto no encontrado")
+        raise HTTPException(status_code=404, detail="Producto no encontrado")
     db.delete(product)
     db.commit()
     return {"detail": "Producto eliminado"}
+
 )
 user_service.py(
 
 from sqlalchemy.orm import Session
 from ..models.user import User
 from ..core.security import hash_password, verify_password
+
+
 
 
 def create_user(db: Session, email: str, password: str):
@@ -692,7 +747,7 @@ def create_user(db: Session, email: str, password: str):
     return user
 
 def authenticate_user(db: Session, email: str, password: str):
-    user = db.query(User).filter(User.email == email).filter()
+    user = db.query(User).filter(User.email == email).first()
     if not user:
         return None
     if not verify_password(password, user.password):
@@ -700,16 +755,37 @@ def authenticate_user(db: Session, email: str, password: str):
     return user
 
 )
+main.py(
 
-footer.html(
+from fastapi import FastAPI
+from app.routers import auth, products , admin, orders
+from fastapi.middleware.cors import CORSMiddleware
+
+app = FastAPI(title="Tienda de Ropa")
+
+app.include_router(auth.router)
+app.include_router(products.router)
+app.include_router(admin.router)
+app.include_router(orders.router)
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
+)
+
+footet.html(
 
 <footer>
     <p>© WorkTrack</p>
 </footer>
 
 )
-
-Header.html(
+header.html(
 
 <header>
     <h2>Tienda</h2>
@@ -719,7 +795,7 @@ Header.html(
         <a href="cart.html">Carrito</a>
         <a href="login.html">Login</a>
         <a href="admin.html">Admin</a>
-        <button id="loginBtn">Logout</button>
+        <button id="logoutBtn">Logout</button>
     </nav>
 </header>
 
@@ -857,7 +933,6 @@ export function initLogin() {
 }
 
 )
-
 authService.js(
 
 import { apiResquest } from "../core/api.js";
@@ -879,7 +954,6 @@ export function getProducts() {
 }
 
 )
-
 cartUI.js(
 
 import { getCart, saveCart } from "../core/storage.js";
@@ -945,6 +1019,7 @@ if (btn){
 }
 
 )
+
 admin.html(
 
 <body>
