@@ -1,4 +1,4 @@
-export function getCart(){
+export function loadCart(){
     return JSON.parse(localStorage.getItem("cart")) || [];
 }
 

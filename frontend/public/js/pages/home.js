@@ -1,7 +1,16 @@
-import { getProducts } from "../services/productService.js";
-import { renderProducts } from "../ui/productUI.js";
+import { fetchProductos } from "../services/productService.js"
+import { crearProducto } from "../ui/productUI.js"
 
-export async function initHome() {
-    const products = await getProducts();
-    renderProducts(products);
+export async function cargarHome() {
+    const contenedor = document.getElementById("productos");
+    contenedor.innerHTML = "<p>cargando productos...</p>";
+    const productos = await fetchProductos();
+    contenedor.innerHTML = "";
+    if (!productos.length){
+        contenedor.innerHTML = "<p>No hay productos disponibles</p>";
+        return;
+    }
+    productos.forEach(prod => {
+        contenedor.appendChild(crearProducto(prod));
+    });
 }

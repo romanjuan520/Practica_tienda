@@ -1,5 +1,5 @@
-import { apiResquest } from "../core/api.js";
+import { apiResquest, getData } from "../core/api.js";
 
 export function getProducts() {
-    return apiResquest("/products");
+    return getData("/products");
 }

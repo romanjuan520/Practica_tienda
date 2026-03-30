@@ -1,25 +1,12 @@
-import { addToCart } from "./cartUI.js"
 
-export function renderProducts(products) {
-    const container = document.getElementById("products");
-
-    container.innerHTML = "";
-
-    products.forEach(p =>{
-        const div = document.createElement("div");
-
-        div.innerHTML = `
-            <h3>${p.name}</h3>
-            <p>${p.price}</p>
-            <button>Comprar</button>
-        
-        `;
-
-        div.querySelector("button").addEventListener("click", () =>{
-            addToCart(p);
-        });
-
-        container.appendChild(div);
-
-    });
+export function crearProducto(producto) {
+    const div = document.createElement("div");
+    div.classList.add("producto");
+    div.innerHTML = `
+        <img src="${producto.imagen}" alt="${producto.nombre}">
+        <h2>${producto.nombre}</h2>
+        <p>${producto.precio}€</p>
+        <button data-id="${producto.id}">Añadir al carrito</button>
+    `;
+    return div
 }

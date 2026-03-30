@@ -1,20 +1,19 @@
-async function loadComponent(id, file) {
-    const res = await fetch(file);
-    const html = await res.text();
-    document.getElementById(id).innerHTML = html;
-}
+import { loadLayout } from "./core/components.js";
+import { cargarHome } from "./pages/home.js";
+import { cargarCart } from "./pages/cart.js";
+import { initLogin } from "./pages/login.js";
 
-export async function initLayout() {
-    await loadComponent("header", "../components/header.html");
-    await loadComponent("footer", "../components/footer.html");
-}
 
-const btn = document.getElementById("logoutBtn");
+document.addEventListener("DOMContentLoaded", async () => {
 
-if (btn){
-    btn.addEventListener("click", () => {
-        localStorage.removeItem("token");
-        alert("Logout");
-        window.location.href = "login.html";
-    });
-}
+    await loadLayout();
+
+    const path = window.location.pathname;
+    if (path.includes("index.html")) {
+        cargarHome();
+    }else if (path.location.pathname) {
+        cargarCart();
+    }else if (path.location.pathname){
+        initLogin();
+    }
+});

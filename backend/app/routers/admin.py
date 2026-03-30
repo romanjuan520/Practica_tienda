@@ -29,15 +29,7 @@ def create_product(
     admin = Depends(get_current_admin)
     ):
 
-    return product_service.create_product(
-        db,
-        product.name,
-        product.price,
-        product.image,
-        product.category_id,
-        product.description,
-        product.stock
-    )
+    return product_service.create_product(db, product)
 @router.put("/products/{product_id}", response_model=ProductOut)
 def update_product(
     product_id: int, 
@@ -51,6 +43,11 @@ def update_product(
         product_id,
         product.model_dump(exclude_unset=True)
     )
+
+    if not update_product:
+        raise HTTPException(status_code=404, detail="Producto no encontrado")
+    return update_product
+
 
 @router.delete("/products/{product_id}")
 def delete_product(product_id: int, 

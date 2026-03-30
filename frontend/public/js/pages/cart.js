@@ -1,22 +1,6 @@
-import { getCart } from "../core/storage.js";
+import { renderCart } from "../ui/cartUI.js";
 
-export function initCart(){
-    const cart = getCart();
-    const container = document.getElementById("cart");
-
-    container.innerHTML = "";
-
-    let total = 0;
-    cart.forEach(p => {
-        total += parseFloat(p.price);
-
-        container.innerHTML += `
-            <div>
-                <h3>${p.name}</h3>
-                <p>${p.price}</p>
-            </div>
-
-        `;
-    });
-    container.innerHTML += `<h3>Total: ${total}€ </h3>`;
+export function cargarCart(){
+    const contenedor = document.getElementById("cart-items");
+    renderCart(contenedor);
 }

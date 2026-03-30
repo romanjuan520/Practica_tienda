@@ -1,18 +1,17 @@
-import { login } from "../services/authService.js";
+import { loginUser } from "../services/authService.js";
 
-export function initLogin() {
-    document.getElementById("loginBtn").addEventListener("click", async () => {
-
-        try{
-            const email = document.getElementById("email").value;
-            const password = document.getElementById("password").value;
-
-            await login(email, password);
-            
-            alert("Login correcto");
+export function initLogin(){
+    const form = document.getElementById("login-form");
+    form.addEventListener("submit", async e =>{
+        e.preventDefault();
+        const email = form.email.value;
+        const password = form.password.value;
+        const res = await loginUser({ email, password });
+        if (res && res.token) {
+            localStorage.setItem("token", res.token);
             window.location.href = "index.html";
-        } catch (error){
-            alert("Error login");
+        }else{
+            alert("Usuario o contraceña incorrectas");
         }
     });
 }
