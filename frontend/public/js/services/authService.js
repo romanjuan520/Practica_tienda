@@ -1,5 +1,5 @@
 import { postData } from "../core/api.js";
 
-export function loginUser(credentials){
-    return postData("login", credentials);
+export function loginUser(data){
+    return postData("auth/login", data);
 }

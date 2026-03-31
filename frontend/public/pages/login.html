@@ -1,22 +1,30 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="../style/style.css">
+</head>
 <body>
-    <div id="header"></div>
+    <header></header>
 
-    <main>
-        <h2>Login</h2>
+    <main class="login-container">
+        <form id="login-form" class="login-box">
+            <h2>Iniciar sesión</h2>
 
-        <input id="email" placeholder="Email">
-        <input id="password" type="password" placeholder="Contrace&#241;a">
-        <hr>
+            <label>Email</label>
+            <input type="email" name="email" required>
+            <hr>
+            <label>Contrace&#241;a</label>
+            <input type="password" name="password" required>
 
-        <button id="loginBtn">Login</button>
+            <button type="submit">Entrar</button>
+
+            <p class="Error" id="Login-error"></p>
+        </form>
     </main>
-    <div id="footer"></div>
-
-    <script type="module">
-        import { initLayout } from "../js/main.js";
-        import { initLogin } from "../js/pages/login.js";
-        
-        await initLayout();
-        initLogin();
-    </script>
+    <footer></footer>
+    <script type="module" src="../js/main.js"></script>
 </body>
+</html>
