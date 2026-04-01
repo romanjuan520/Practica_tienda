@@ -1,12 +1,9 @@
 import { getToken } from "./storage.js";
 export const API_URL = "http://127.0.0.1:8000"
 
-function getAuthHeaders(){
-    const token = getToken();
-}
 
 function getAuthHeaders() {
-    const token = localStorage.getItem("access_token");
+    const token = getToken();
 
     const headers = {
         "Content-Type": "application/json"

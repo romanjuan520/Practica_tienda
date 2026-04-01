@@ -1,4 +1,4 @@
-async function locadComponent(selector, path) {
+async function loadComponent(selector, path) {
     const element = document.querySelector(selector);
 
     if (!element) return;
@@ -12,10 +12,10 @@ async function locadComponent(selector, path) {
     }
 }
 export function loadHeader() {
-    return locadComponent("header", "/componenets/header.html");
+    return loadComponent("header", "/components/header.html");
 }
 export function loadFooter(){
-    return locadComponent("footer", "/components/footer.html");
+    return loadComponent("footer", "/components/footer.html");
 }
 export async function loadLayout() {
     await loadHeader();

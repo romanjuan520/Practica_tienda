@@ -1,5 +1,11 @@
-import { fetchProductos } from "../services/productService.js"
+import { getProducts } from "../services/productService.js"
 import { crearProducto } from "../ui/productUI.js"
+
+async function mostrarProductos() {
+    const productos = await getProducts();
+    console.log(productos);
+}
+mostrarProductos();
 
 export async function cargarHome() {
     const contenedor = document.getElementById("productos");
