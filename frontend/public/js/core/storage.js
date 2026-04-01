@@ -17,3 +17,4 @@ export function setToken(token) {
 export function removeToken() {
     localStorage.removeItem("access_token");
 }
+
