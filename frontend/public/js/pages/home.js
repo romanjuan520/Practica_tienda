@@ -10,7 +10,7 @@ mostrarProductos();
 export async function cargarHome() {
     const contenedor = document.getElementById("productos");
     contenedor.innerHTML = "<p>cargando productos...</p>";
-    const productos = await fetchProductos();
+    const productos = await getProducts();
     contenedor.innerHTML = "";
     if (!productos.length){
         contenedor.innerHTML = "<p>No hay productos disponibles</p>";

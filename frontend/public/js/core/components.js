@@ -12,10 +12,10 @@ async function loadComponent(selector, path) {
     }
 }
 export function loadHeader() {
-    return loadComponent("header", "/components/header.html");
+    return loadComponent("header", "../components/header.html");
 }
 export function loadFooter(){
-    return loadComponent("footer", "/components/footer.html");
+    return loadComponent("footer", "../components/footer.html");
 }
 export async function loadLayout() {
     await loadHeader();

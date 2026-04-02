@@ -1,0 +1,785 @@
+ruta(
+
+PS C:\Users\roman\Documents\auto-estudio\JavaScript\tienda_practica>cd .\frontend        
+PS C:\Users\roman\Documents\auto-estudio\JavaScript\tienda_practica\frontend> dir -R
+
+
+    Directorio: C:\Users\roman\Documents\auto-estudio\JavaScript\tie
+    nda_practica\frontend
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+d-----        22/03/2026     15:57                public
+
+
+    Directorio: C:\Users\roman\Documents\auto-estudio\JavaScript\tie 
+    nda_practica\frontend\public
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+d-----        22/03/2026     15:58                assets
+d-----        22/03/2026     16:00                components
+d-----        25/03/2026      1:29                js
+d-----        22/03/2026     16:00                pages
+d-----        22/03/2026     15:58                style
+
+
+    Directorio: C:\Users\roman\Documents\auto-estudio\JavaScript\tie 
+    nda_practica\frontend\public\assets
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+d-----        22/03/2026     15:58                images
+
+
+    Directorio: C:\Users\roman\Documents\auto-estudio\JavaScript\tie 
+    nda_practica\frontend\public\components
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a----        25/03/2026     15:40             44 footer.html        
+-a----        02/04/2026     22:07            363 header.html        
+
+
+    Directorio: C:\Users\roman\Documents\auto-estudio\JavaScript\tie 
+    nda_practica\frontend\public\js
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+d-----        31/03/2026      1:27                core
+d-----        02/04/2026     21:26                pages
+d-----        25/03/2026      1:28                services
+d-----        25/03/2026      1:29                ui
+-a----        02/04/2026      2:19            539 main.js
+
+
+    Directorio: C:\Users\roman\Documents\auto-estudio\JavaScript\tie 
+    nda_practica\frontend\public\js\core
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a----        02/04/2026      1:44           1520 api.js
+-a----        02/04/2026      2:28            641 components.js      
+-a----        31/03/2026      1:46            119 config.js
+-a----        02/04/2026      1:52            447 storage.js
+
+
+    Directorio: C:\Users\roman\Documents\auto-estudio\JavaScript\tie 
+    nda_practica\frontend\public\js\pages
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a----        25/03/2026      2:38            856 admin.js
+-a----        31/03/2026      1:15            173 cart.js
+-a----        02/04/2026      2:31            708 home.js
+-a----        31/03/2026     15:36            799 login.js
+-a----        02/04/2026     21:34            743 register.js        
+
+
+    Directorio: C:\Users\roman\Documents\auto-estudio\JavaScript\tie 
+    nda_practica\frontend\public\js\services
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a----        02/04/2026     21:39            494 authService.js     
+-a----        30/03/2026     20:32            124 orderService.js   
+-a----        01/04/2026     15:49            113 productService.js  
+
+
+    Directorio: C:\Users\roman\Documents\auto-estudio\JavaScript\tie 
+    nda_practica\frontend\public\js\ui
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a----        02/04/2026      2:22            510 cartUI.js
+-a----        30/03/2026     20:49            387 productUI.js       
+
+
+    Directorio: C:\Users\roman\Documents\auto-estudio\JavaScript\tie
+    nda_practica\frontend\public\pages
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a----        25/03/2026      2:28            515 admin.html
+-a----        25/03/2026      2:19            372 cart.html
+-a----        25/03/2026     19:12            375 index.html
+-a----        02/04/2026      2:17            843 login.html
+-a----        02/04/2026     21:25            999 register.html      
+
+
+    Directorio: C:\Users\roman\Documents\auto-estudio\JavaScript\tie 
+    nda_practica\frontend\public\style
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a----        02/04/2026     14:12           2007 style.css
+
+
+PS C:\Users\roman\Documents\auto-estudio\JavaScript\tienda_practica\frontend>
+)
+
+footer (
+
+<footer>
+    <p>© WorkTrack</p>
+</footer>
+
+)
+header.html(
+
+<header>
+    <h2>Tienda</h2>
+
+    <div>
+        <nav>
+            <a href="index.html">Inicio</a>
+            <a href="cart.html">Carrito</a>
+            <a href="login.html">Login</a>
+            <a href="admin.html">Admin</a>
+            <a href="register.html">Registrase</a>
+            <button id="logoutBtn">Logout</button>
+        </nav>
+    </div>
+</header>
+
+)
+main.js(
+
+import { loadLayout } from "./core/components.js";
+import { cargarHome } from "./pages/home.js";
+import { cargarCart } from "./pages/cart.js";
+import { initLogin } from "./pages/login.js";
+
+
+document.addEventListener("DOMContentLoaded", async () => {
+
+    await loadLayout();
+
+    const path = window.location.pathname;
+    if (path.includes("index.html")) {
+        cargarHome();
+    }else if (path.includes("cart.html")) {
+        cargarCart();
+    }else if (path.includes("login.html")){
+        initLogin();
+    }
+});
+
+)
+api.js(
+
+import { getToken } from "./storage.js";
+export const API_URL = "http://127.0.0.1:8000"
+
+
+function getAuthHeaders() {
+    const token = getToken();
+
+    const headers = {
+        "Content-Type": "application/json"
+    };
+    if (token) {
+        headers["Authorization"] = `Bearer ${token}`
+    }
+    return headers
+}
+
+export async function getData(endpoint) {
+    try{
+        const res = await fetch(`${API_URL}/${endpoint}`, {
+            headers: getAuthHeaders()
+        });
+        if (!res.ok) throw new Error("Error al obtener datos");
+        return await res.json();
+    } catch (error){
+        console.error(error);
+        return [];
+    }
+}
+
+export async function postData(endpoint, data) {
+    try{
+        const res = await fetch(`${API_URL}/${endpoint}`, {
+            method: "POST",
+            headers: getAuthHeaders(),
+            body: JSON.stringify(data)
+        });
+        if (!res.ok) throw new Error ("Error en POST");
+        return await res.json();
+
+    } catch (error){
+        console.error(error);
+        return null;
+    }
+}
+export async function putData(endpoint, data) {
+    try {
+        const res = await fetch(`${API_URL}/${endpoint}`,{
+            method: "PUT",
+            headers: getAuthHeaders(),
+            body: JSON.stringify(data)
+        });
+        if (!res.ok) throw new Error("Error en PUT");
+        return await res.json();
+    } catch (error) {
+        console.error(error);
+        return null;
+    }
+}
+
+)
+components.js(
+
+async function loadComponent(selector, path) {
+    const element = document.querySelector(selector);
+
+    if (!element) return;
+
+    try{
+        const res = await fetch(path);
+        const html = await res.text();
+        element.innerHTML = html;
+    } catch (error){
+        console.error(`Error cargando ${path}:`, error);
+    }
+}
+export function loadHeader() {
+    return loadComponent("header", "../components/header.html");
+}
+export function loadFooter(){
+    return loadComponent("footer", "../components/footer.html");
+}
+export async function loadLayout() {
+    await loadHeader();
+    await loadFooter();
+}
+
+
+)
+config.js(
+
+export const TAX = 0.21;
+
+export const ROUTES = {
+    login: "/pages/login.html",
+    home: "/pages/index.html"
+};
+
+)
+storage.js(
+
+export function loadCart(){
+    return JSON.parse(localStorage.getItem("cart")) || [];
+}
+
+export function saveCart(cart){
+    localStorage.setItem("cart", JSON.stringify(cart));
+}
+
+export function getToken(){
+    return localStorage.getItem("access_token");
+}
+
+export function setToken(token) {
+    localStorage.setItem("access_token", token);
+}
+
+export function removeToken() {
+    localStorage.removeItem("access_token");
+}
+
+
+
+)
+
+admin.js(
+
+import { apiResquest } from "../core/api.js";
+
+function checkAdmin() {
+    const token = localStorage.getItem("token");
+
+    if (!token) {
+        alert("No autorizado");
+        window.location.href = "login.html";
+    }
+}
+
+export function initAdmin() {
+    checkAdmin();
+    document.getElementById("createBtn").addEventListener("click", async () => {
+        try{
+            const name = document.getElementById("name").value;
+            const price = parseFloat(document.getElementById("price").value);
+
+            await apiResquest("/admin/products", "POST",{
+                name,
+                price,
+                image: "",
+                category_id: null
+            });
+            alert("Producto creado");
+        } catch (error){
+            alert("Error: necesitas ser admin");
+        }
+    });
+}
+
+
+)
+cart.js(
+
+import { renderCart } from "../ui/cartUI.js";
+
+export function cargarCart(){
+    const contenedor = document.getElementById("cart-items");
+    renderCart(contenedor);
+}
+
+)
+
+home.js(
+
+import { getProducts } from "../services/productService.js"
+import { crearProducto } from "../ui/productUI.js"
+
+async function mostrarProductos() {
+    const productos = await getProducts();
+    console.log(productos);
+}
+mostrarProductos();
+
+export async function cargarHome() {
+    const contenedor = document.getElementById("productos");
+    contenedor.innerHTML = "<p>cargando productos...</p>";
+    const productos = await getProducts();
+    contenedor.innerHTML = "";
+    if (!productos.length){
+        contenedor.innerHTML = "<p>No hay productos disponibles</p>";
+        return;
+    }
+    productos.forEach(prod => {
+        contenedor.appendChild(crearProducto(prod));
+    });
+}
+
+)
+login.js(
+
+import { loginUser } from "../services/authService.js";
+
+export function initLogin(){
+    const form = document.getElementById("login-form");
+    const errorEl = document.getElementById("login-error")
+    form.addEventListener("submit", async e =>{
+        e.preventDefault();
+        
+        const email = form.email.value;
+        const password = form.password.value;
+        
+        errorEl.textContent = "Cargando..."
+
+        const res = await loginUser({ email, password });
+        if (res && res.access_token) {
+            localStorage.setItem("access_token", res.access_token);
+            localStorage.setItem("user",email)
+            window.location.href = "index.html";
+        }else{
+            alert("Usuario o contraceña incorrectas");
+        }
+    });
+}
+
+)
+
+register.js(
+
+import { registerUser } from "../services/authService.js"
+
+const form = document.getElementById("registerForm");
+const error = document.getElementById("error");
+
+form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    const username = document.getElementById("username").value;
+    const email = document.getElementById("email").value;
+    const password = document.getElementById("password").value;
+
+    try {
+        await registerUser({
+            username,
+            email,
+            password
+        });
+
+        alert("Usuario registrado correctamente");
+
+        window.location.href = "login.html";
+    }catch (err) {
+        error.textContent = "Error al registrar usuario";
+    }
+});
+
+)
+authService.js(
+
+import { postData } from "../core/api.js";
+
+export function loginUser(data){
+    return postData("auth/login", data);
+}
+
+export async function registerUser(userData) {
+    
+    const response = await fetch("http://localhost:3000/users",{
+        method: "POST",
+        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify(userData)
+    });
+    if (!response.ok){
+        throw new Error("Error en el registro");
+    }
+    return await response.json();
+}
+
+)
+orderService.js(
+
+import { postData } from "../core/api.js";
+
+export function createOrder(order){
+    return postData("pedidos", order);
+}
+
+)
+productService.js(
+
+import {  getData } from "../core/api.js";
+
+export function getProducts() {
+    return getData("products");
+}
+
+)
+
+cartUI.js(
+
+import { loadCart, saveCart } from "../core/storage.js";
+
+export function renderCart(container){
+    const cart = loadCart();
+    container.innerHTML = "";
+    if (cart.length === 0){
+        container.innerHTML = "<p>El carrito está vacío</p>";
+        return;
+    }
+    cart.forEach(item => {
+        const div = document.createElement("div");
+        div.classList.add("cart-item");
+        div.innerHTML = `${item.nombre} - ${item.precio}€`;
+        container.appendChild(div);
+    });
+}
+
+)
+productUI.js(
+
+
+export function crearProducto(producto) {
+    const div = document.createElement("div");
+    div.classList.add("producto");
+    div.innerHTML = `
+        <img src="${producto.imagen}" alt="${producto.nombre}">
+        <h2>${producto.nombre}</h2>
+        <p>${producto.precio}€</p>
+        <button data-id="${producto.id}">Añadir al carrito</button>
+    `;
+    return div
+}
+
+)
+
+admin.html(
+
+<body>
+    <div id="header"></div>
+
+    <main>
+        <h2>Admin Dashboard</h2>
+
+        <input id="name" placeholder="Nombre">
+        <input id="price" placeholder="Precio">
+
+        <hr>
+        <button id="createBtn">Crear producto</button>
+    </main>
+    <div id="footer"></div>
+
+    <script type="module">
+        import { initLayout } from "../js/main.js";
+        import { initAdmin } from "../js/pages/admin.js";
+
+        await initLayout();
+        initAdmin();
+    </script>
+</body>
+
+)
+cart.html(
+
+<body>
+    <div id="header"></div>
+
+    <main>
+        <h2>Carrito</h2>
+        <div id="cart"></div>
+    </main>
+
+    <div id="footer"></div>
+    <script type="module">
+        import { initLayout } from "../js/main.js";
+        import { initCart } from "../js/pages/cart.js";
+        
+        await initLayout();
+        initCart();
+    </script>
+</body>
+
+)
+index.html(
+
+<body>
+    <div id="header"></div>
+
+    <main>
+        <h1>Tienda</h1>
+        <div id="products"></div>
+    </main>
+
+    <div id="footer"></div>
+
+    <script type="module">
+        import { initLayout } from "../js/main.js";
+        import { initHome } from "../js/pages/home.js";
+
+        await initLayout();
+        await initHome();
+    </script>
+</body>
+
+)
+login.html(
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="../style/style.css">
+</head>
+<body>
+    <header></header>
+
+    <main class="login-container">
+        <form id="login-form" class="login-box">
+            <h2>Iniciar sesión</h2>
+
+            <label>Email</label>
+            <input type="email" name="email" required>
+            <hr>
+            <label>Contrace&#241;a</label>
+            <input type="password" name="password" required>
+
+            <button type="submit">Entrar</button>
+
+            <p class="Error" id="login-error"></p>
+        </form>
+    </main>
+    <footer></footer>
+    <script type="module" src="../js/main.js"></script>
+</body>
+</html>
+
+)
+
+register.html(
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="../style/style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+</head>
+<body>
+    <div id="header"></div>
+    <main>
+        <div class="login-container">
+            <form id="registerForm" class="login-box">
+                <h2>Registro</h2>
+
+                <label>Nombre</label>
+                <input type="text" id="username" required>
+
+                <label>Email</label>
+                <input type="email" id="email" required>
+
+                <label>Contrace&#241;a</label>
+                <input type="password" id="password" required>
+
+                <button type="submit">Registrase</button>
+
+                <p id="error" class="error"></p>
+            </form>
+        </div>
+    </main>
+    <div id="footer"></div>
+
+    <script type="module" src="../js/main.js"></script>
+</body>
+</html>
+
+)
+style.css(
+
+html, body {
+    height: 100%;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+    background: #f4f4f4;
+    display: flex;
+    flex-direction: column;
+}
+main {
+    flex: 1;
+    max-width: 1100px;
+    margin: 0;
+    padding: 20px;
+}
+
+/*esot es el header*/
+
+header {
+    background: #222;
+    color: #ccc;
+    padding: 15px 40px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header h2 {
+    margin: 0;
+    font-size: 1.6rem;
+    margin-right: 40px;
+}
+header div{
+    text-align: left ;
+}
+header nav {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+header nav a {
+    color: white;
+    text-decoration: none;
+    font-size: 0.95rem;
+    transition: 0.2s;
+}
+header nav a:hover {
+    color: #f0c040;
+}
+
+/*Button*/
+
+#logoutBtn {
+    background: #f44336;
+    border: none;
+    color: #ccc;
+    padding: 6px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/*Footer*/
+footer {
+    background: #222;
+    color: #ccc;
+    text-align: center;
+    padding: 15px;
+    margin-top: 40px;
+}
+
+footer p {
+    margin: 0;
+    font-size: 0.9rem;
+}
+
+
+/*Esto es el estilo de login*/
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80vh;
+}
+
+.login-box {
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.login-box h2 {
+    text-align: center;
+}
+
+.login-box input {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.login-box button {
+    padding: 10px;
+    border: none;
+    background: #222;
+    color: white;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: 0.3s;
+}
+.login-box button:hover{
+    background: #444;
+}
+.error {
+    color: red;
+    font-size: 0.9rem;
+    text-align: center;
+}
+
+)

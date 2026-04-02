@@ -2,6 +2,7 @@ import { loadLayout } from "./core/components.js";
 import { cargarHome } from "./pages/home.js";
 import { cargarCart } from "./pages/cart.js";
 import { initLogin } from "./pages/login.js";
+import { initRegister } from "./pages/register.js";
 
 
 document.addEventListener("DOMContentLoaded", async () => {
@@ -11,9 +12,10 @@ document.addEventListener("DOMContentLoaded", async () => {
     const path = window.location.pathname;
     if (path.includes("index.html")) {
         cargarHome();
-    }else if (path.location.pathname) {
+    }else if (path.includes("cart.html")) {
         cargarCart();
-    }else if (path.location.pathname){
+    }else if (path.includes("login.html")){
         initLogin();
-    }
+    }else if (path.includes("registre.html"))
+        initRegister();
 });

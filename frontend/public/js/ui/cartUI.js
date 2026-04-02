@@ -11,6 +11,6 @@ export function renderCart(container){
         const div = document.createElement("div");
         div.classList.add("cart-item");
         div.innerHTML = `${item.nombre} - ${item.precio}€`;
-        container.appendChield(div);
+        container.appendChild(div);
     });
 }

@@ -1,9 +1,83 @@
-body {
-    font-family: Arial, Helvetica, sans-serif;
-    margin: o;
-    background: #f4f4f4;
+html, body {
+    height: 100%;
 }
 
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+    background: #f4f4f4;
+    display: flex;
+    flex-direction: column;
+}
+main {
+    flex: 1;
+    max-width: 1100px;
+    margin: 0;
+    padding: 20px;
+}
+
+/*esot es el header*/
+
+header {
+    background: #222;
+    color: #ccc;
+    padding: 15px 40px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header h2 {
+    margin: 0;
+    font-size: 1.6rem;
+    margin-right: 40px;
+}
+header div{
+    text-align: left ;
+}
+header nav {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+header nav a {
+    color: white;
+    text-decoration: none;
+    font-size: 0.95rem;
+    transition: 0.2s;
+}
+header nav a:hover {
+    color: #f0c040;
+}
+
+/*Button*/
+
+#logoutBtn {
+    background: #f44336;
+    border: none;
+    color: #ccc;
+    padding: 6px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/*Footer*/
+footer {
+    background: #222;
+    color: #ccc;
+    text-align: center;
+    padding: 15px;
+    margin-top: 40px;
+}
+
+footer p {
+    margin: 0;
+    font-size: 0.9rem;
+}
+
+
+/*Esto es el estilo de login*/
 .login-container {
     display: flex;
     justify-content: center;
