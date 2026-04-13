@@ -1,785 +1,1035 @@
+mysql tienda_db(
+
+mysql> use tienda_db
+Database changed
+mysql> show tables;
++---------------------+
+| Tables_in_tienda_db |
++---------------------+
+| categories          |
+| order_items         |
+| orders              |
+| products            |
+| users               |
++---------------------+
+5 rows in set (0.08 sec)
+
+mysql> desc users;
++---------------+-------------------------+------+-----+-------------------+-------------------+
+| Field         | Type                    | Null | Key | Default           | Extra             |
++---------------+-------------------------+------+-----+-------------------+-------------------+
+| id            | int                     | NO   | PRI | NULL              | auto_increment    |
+| email         | varchar(320)            | NO   | UNI | NULL              |                   |
+| password_hash | varchar(255)            | NO   |     | NULL              |                   |
+| role          | enum('cliente','admin') | YES  |     | cliente           |                   |
+| created_at    | timestamp               | YES  |     | CURRENT_TIMESTAMP | DEFAULT_GENERATED |
+| nombre        | varchar(255)            | YES  |     | NULL              |                   |
+| apellido      | varchar(255)            | YES  |     | NULL              |                   |
+| imagen        | varchar(255)            | YES  |     | NULL              |                   |
++---------------+-------------------------+------+-----+-------------------+-------------------+
+8 rows in set (0.03 sec)
+
+mysql> desc categories;
++-------+--------------+------+-----+---------+----------------+
+| Field | Type         | Null | Key | Default | Extra          |
++-------+--------------+------+-----+---------+----------------+
+| id    | int          | NO   | PRI | NULL    | auto_increment |
+| name  | varchar(100) | NO   |     | NULL    |                |
++-------+--------------+------+-----+---------+----------------+
+2 rows in set (0.01 sec)
+
+mysql> desc order_items;
++------------+---------------+------+-----+---------+----------------+
+| Field      | Type          | Null | Key | Default | Extra          |
++------------+---------------+------+-----+---------+----------------+
+| id         | int           | NO   | PRI | NULL    | auto_increment |
+| order_id   | int           | NO   | MUL | NULL    |                |
+| product_id | int           | NO   | MUL | NULL    |                |
+| quantity   | int           | YES  |     | 1       |                |
+| price      | decimal(10,2) | NO   |     | NULL    |                |
++------------+---------------+------+-----+---------+----------------+
+5 rows in set (0.01 sec)
+
+mysql> desc orders;
++---------+---------------+------+-----+---------+----------------+
+| Field   | Type          | Null | Key | Default | Extra          |
++---------+---------------+------+-----+---------+----------------+
+| id      | int           | NO   | PRI | NULL    | auto_increment |
+| user_id | int           | NO   | MUL | NULL    |                |
+| total   | decimal(10,2) | NO   |     | NULL    |                |
++---------+---------------+------+-----+---------+----------------+
+3 rows in set (0.00 sec)
+
+mysql> desc products;
++-------------+---------------+------+-----+---------+----------------+
+| Field       | Type          | Null | Key | Default | Extra          |
++-------------+---------------+------+-----+---------+----------------+
+| id          | int           | NO   | PRI | NULL    | auto_increment |
+| name        | varchar(255)  | NO   |     | NULL    |                |
+| price       | decimal(10,2) | NO   |     | NULL    |                |
+| image       | varchar(255)  | YES  |     | NULL    |                |
+| category_id | int           | YES  | MUL | NULL    |                |
+| description | text          | YES  |     | NULL    |                |
+| stock       | int           | YES  |     | 0       |                |
++-------------+---------------+------+-----+---------+----------------+
+7 rows in set (0.01 sec)
+
+mysql>
+
+)
+
+.env(
+
+DB_USER=root
+DB_PASSWORD=abc123.
+DB_HOST=localhost
+DB_PORT=3306
+DB_NAME=tienda_db
+
+SECRET_KEY=tu_secreto_superseguro
+ACCESS_TOKEN_EXPIRE_MINUTES=60
+
+)
+
 ruta(
 
-PS C:\Users\roman\Documents\auto-estudio\JavaScript\tienda_practica>cd .\frontend        
-PS C:\Users\roman\Documents\auto-estudio\JavaScript\tienda_practica\frontend> dir -R
+PS C:\Users\roman\Documents\auto-estudio\JavaScript\tienda_practica> dir -R
 
 
-    Directorio: C:\Users\roman\Documents\auto-estudio\JavaScript\tie
-    nda_practica\frontend
+    Directorio: C:\Users\roman\Documents\auto-estudio\JavaScript\tienda_practica
 
 
-Mode                 LastWriteTime         Length Name
-----                 -------------         ------ ----
-d-----        22/03/2026     15:57                public
+Mode                 LastWriteTime         Length Name                                                                                   
+----                 -------------         ------ ----                                                                                   
+d-----        25/03/2026     23:50                backend                                                                                
+d-----        22/03/2026     15:57                frontend                                                                               
+-a----        29/03/2026     22:11             29 .gitignore                                                                             
+-a----        02/04/2026      2:01             94 package-lock.json                                                                      
+-a----        10/04/2026     16:35           4114 proyecto.txt                                                                           
+-a----        26/03/2026      1:40             81 README.md                                                                              
 
 
-    Directorio: C:\Users\roman\Documents\auto-estudio\JavaScript\tie 
-    nda_practica\frontend\public
+    Directorio: C:\Users\roman\Documents\auto-estudio\JavaScript\tienda_practica\backend
 
 
-Mode                 LastWriteTime         Length Name
-----                 -------------         ------ ----
-d-----        22/03/2026     15:58                assets
-d-----        22/03/2026     16:00                components
-d-----        25/03/2026      1:29                js
-d-----        22/03/2026     16:00                pages
-d-----        22/03/2026     15:58                style
+Mode                 LastWriteTime         Length Name                                                                                   
+----                 -------------         ------ ----                                                                                   
+d-----        10/04/2026     15:31                app                                                                                    
+-a----        22/03/2026     17:08            154 .env                                                                                   
 
 
-    Directorio: C:\Users\roman\Documents\auto-estudio\JavaScript\tie 
-    nda_practica\frontend\public\assets
+    Directorio: C:\Users\roman\Documents\auto-estudio\JavaScript\tienda_practica\backend\app
 
 
-Mode                 LastWriteTime         Length Name
-----                 -------------         ------ ----
-d-----        22/03/2026     15:58                images
+Mode                 LastWriteTime         Length Name                                                                                   
+----                 -------------         ------ ----                                                                                   
+d-----        25/03/2026     23:51                core                                                                                   
+d-----        25/03/2026     23:42                db                                                                                     
+d-----        25/03/2026     23:51                models                                                                                 
+d-----        25/03/2026     23:42                routers                                                                                
+d-----        25/03/2026     23:51                schemas                                                                                
+d-----        25/03/2026     23:51                services                                                                               
+d-----        10/04/2026     15:36                static                                                                                 
+d-----        07/04/2026     16:03                __pycache__                                                                            
+-a----        10/04/2026     15:41            837 main.py                                                                                
 
 
-    Directorio: C:\Users\roman\Documents\auto-estudio\JavaScript\tie 
-    nda_practica\frontend\public\components
+    Directorio: C:\Users\roman\Documents\auto-estudio\JavaScript\tienda_practica\backend\app\core
 
 
-Mode                 LastWriteTime         Length Name
-----                 -------------         ------ ----
--a----        25/03/2026     15:40             44 footer.html        
--a----        02/04/2026     22:07            363 header.html        
+Mode                 LastWriteTime         Length Name                                                                                   
+----                 -------------         ------ ----                                                                                   
+d-----        25/03/2026     23:51                __pycache__                                                                            
+-a----        05/04/2026      0:20              0 config.py                                                                              
+-a----        24/03/2026     15:26            961 security.py                                                                            
 
 
-    Directorio: C:\Users\roman\Documents\auto-estudio\JavaScript\tie 
-    nda_practica\frontend\public\js
+    Directorio: C:\Users\roman\Documents\auto-estudio\JavaScript\tienda_practica\backend\app\core\__pycache__
 
 
-Mode                 LastWriteTime         Length Name
-----                 -------------         ------ ----
-d-----        31/03/2026      1:27                core
-d-----        02/04/2026     21:26                pages
-d-----        25/03/2026      1:28                services
-d-----        25/03/2026      1:29                ui
--a----        02/04/2026      2:19            539 main.js
+Mode                 LastWriteTime         Length Name                                                                                   
+----                 -------------         ------ ----                                                                                   
+-a----        25/03/2026     23:51           1962 security.cpython-313.pyc                                                               
 
 
-    Directorio: C:\Users\roman\Documents\auto-estudio\JavaScript\tie 
-    nda_practica\frontend\public\js\core
+    Directorio: C:\Users\roman\Documents\auto-estudio\JavaScript\tienda_practica\backend\app\db
 
 
-Mode                 LastWriteTime         Length Name
-----                 -------------         ------ ----
--a----        02/04/2026      1:44           1520 api.js
--a----        02/04/2026      2:28            641 components.js      
--a----        31/03/2026      1:46            119 config.js
--a----        02/04/2026      1:52            447 storage.js
+Mode                 LastWriteTime         Length Name                                                                                   
+----                 -------------         ------ ----                                                                                   
+d-----        25/03/2026     23:51                __pycache__                                                                            
+-a----        25/03/2026     18:20             72 base.py                                                                                
+-a----        25/03/2026     23:48            771 database.py                                                                            
 
 
-    Directorio: C:\Users\roman\Documents\auto-estudio\JavaScript\tie 
-    nda_practica\frontend\public\js\pages
+    Directorio: C:\Users\roman\Documents\auto-estudio\JavaScript\tienda_practica\backend\app\db\__pycache__
 
 
-Mode                 LastWriteTime         Length Name
-----                 -------------         ------ ----
--a----        25/03/2026      2:38            856 admin.js
--a----        31/03/2026      1:15            173 cart.js
--a----        02/04/2026      2:31            708 home.js
--a----        31/03/2026     15:36            799 login.js
--a----        02/04/2026     21:34            743 register.js        
+Mode                 LastWriteTime         Length Name                                                                                   
+----                 -------------         ------ ----                                                                                   
+-a----        25/03/2026     23:51            270 base.cpython-313.pyc                                                                   
+-a----        25/03/2026     23:48           1461 database.cpython-313.pyc                                                               
 
 
-    Directorio: C:\Users\roman\Documents\auto-estudio\JavaScript\tie 
-    nda_practica\frontend\public\js\services
+    Directorio: C:\Users\roman\Documents\auto-estudio\JavaScript\tienda_practica\backend\app\models
 
 
-Mode                 LastWriteTime         Length Name
-----                 -------------         ------ ----
--a----        02/04/2026     21:39            494 authService.js     
--a----        30/03/2026     20:32            124 orderService.js   
--a----        01/04/2026     15:49            113 productService.js  
+Mode                 LastWriteTime         Length Name                                                                                   
+----                 -------------         ------ ----                                                                                   
+d-----        10/04/2026     15:13                __pycache__                                                                            
+-a----        28/03/2026      8:42            227 category.py                                                                            
+-a----        07/04/2026     16:14            390 order.py                                                                               
+-a----        25/03/2026     23:33            406 order_item.py                                                                          
+-a----        28/03/2026      1:48            470 product.py                                                                             
+-a----        10/04/2026     15:39            517 user.py                                                                                
 
 
-    Directorio: C:\Users\roman\Documents\auto-estudio\JavaScript\tie 
-    nda_practica\frontend\public\js\ui
+    Directorio: C:\Users\roman\Documents\auto-estudio\JavaScript\tienda_practica\backend\app\models\__pycache__
 
 
-Mode                 LastWriteTime         Length Name
-----                 -------------         ------ ----
--a----        02/04/2026      2:22            510 cartUI.js
--a----        30/03/2026     20:49            387 productUI.js       
+Mode                 LastWriteTime         Length Name                                                                                   
+----                 -------------         ------ ----                                                                                   
+-a----        28/03/2026      9:05            711 category.cpython-313.pyc                                                               
+-a----        07/04/2026     16:14            923 order.cpython-313.pyc                                                                  
+-a----        25/03/2026     23:51            944 order_item.cpython-313.pyc                                                             
+-a----        28/03/2026      1:48           1050 product.cpython-313.pyc                                                                
+-a----        10/04/2026     15:13           1038 user.cpython-313.pyc                                                                   
 
 
-    Directorio: C:\Users\roman\Documents\auto-estudio\JavaScript\tie
-    nda_practica\frontend\public\pages
+    Directorio: C:\Users\roman\Documents\auto-estudio\JavaScript\tienda_practica\backend\app\routers
 
 
-Mode                 LastWriteTime         Length Name
-----                 -------------         ------ ----
--a----        25/03/2026      2:28            515 admin.html
--a----        25/03/2026      2:19            372 cart.html
--a----        25/03/2026     19:12            375 index.html
--a----        02/04/2026      2:17            843 login.html
--a----        02/04/2026     21:25            999 register.html      
-
-
-    Directorio: C:\Users\roman\Documents\auto-estudio\JavaScript\tie 
-    nda_practica\frontend\public\style
-
-
-Mode                 LastWriteTime         Length Name
-----                 -------------         ------ ----
--a----        02/04/2026     14:12           2007 style.css
-
-
-PS C:\Users\roman\Documents\auto-estudio\JavaScript\tienda_practica\frontend>
-)
-
-footer (
-
-<footer>
-    <p>© WorkTrack</p>
-</footer>
-
-)
-header.html(
-
-<header>
-    <h2>Tienda</h2>
-
-    <div>
-        <nav>
-            <a href="index.html">Inicio</a>
-            <a href="cart.html">Carrito</a>
-            <a href="login.html">Login</a>
-            <a href="admin.html">Admin</a>
-            <a href="register.html">Registrase</a>
-            <button id="logoutBtn">Logout</button>
-        </nav>
-    </div>
-</header>
-
-)
-main.js(
-
-import { loadLayout } from "./core/components.js";
-import { cargarHome } from "./pages/home.js";
-import { cargarCart } from "./pages/cart.js";
-import { initLogin } from "./pages/login.js";
-
-
-document.addEventListener("DOMContentLoaded", async () => {
-
-    await loadLayout();
-
-    const path = window.location.pathname;
-    if (path.includes("index.html")) {
-        cargarHome();
-    }else if (path.includes("cart.html")) {
-        cargarCart();
-    }else if (path.includes("login.html")){
-        initLogin();
-    }
-});
-
-)
-api.js(
-
-import { getToken } from "./storage.js";
-export const API_URL = "http://127.0.0.1:8000"
-
-
-function getAuthHeaders() {
-    const token = getToken();
-
-    const headers = {
-        "Content-Type": "application/json"
-    };
-    if (token) {
-        headers["Authorization"] = `Bearer ${token}`
-    }
-    return headers
-}
-
-export async function getData(endpoint) {
-    try{
-        const res = await fetch(`${API_URL}/${endpoint}`, {
-            headers: getAuthHeaders()
-        });
-        if (!res.ok) throw new Error("Error al obtener datos");
-        return await res.json();
-    } catch (error){
-        console.error(error);
-        return [];
-    }
-}
-
-export async function postData(endpoint, data) {
-    try{
-        const res = await fetch(`${API_URL}/${endpoint}`, {
-            method: "POST",
-            headers: getAuthHeaders(),
-            body: JSON.stringify(data)
-        });
-        if (!res.ok) throw new Error ("Error en POST");
-        return await res.json();
-
-    } catch (error){
-        console.error(error);
-        return null;
-    }
-}
-export async function putData(endpoint, data) {
-    try {
-        const res = await fetch(`${API_URL}/${endpoint}`,{
-            method: "PUT",
-            headers: getAuthHeaders(),
-            body: JSON.stringify(data)
-        });
-        if (!res.ok) throw new Error("Error en PUT");
-        return await res.json();
-    } catch (error) {
-        console.error(error);
-        return null;
-    }
-}
-
-)
-components.js(
-
-async function loadComponent(selector, path) {
-    const element = document.querySelector(selector);
-
-    if (!element) return;
-
-    try{
-        const res = await fetch(path);
-        const html = await res.text();
-        element.innerHTML = html;
-    } catch (error){
-        console.error(`Error cargando ${path}:`, error);
-    }
-}
-export function loadHeader() {
-    return loadComponent("header", "../components/header.html");
-}
-export function loadFooter(){
-    return loadComponent("footer", "../components/footer.html");
-}
-export async function loadLayout() {
-    await loadHeader();
-    await loadFooter();
-}
-
-
-)
-config.js(
-
-export const TAX = 0.21;
-
-export const ROUTES = {
-    login: "/pages/login.html",
-    home: "/pages/index.html"
-};
-
-)
-storage.js(
-
-export function loadCart(){
-    return JSON.parse(localStorage.getItem("cart")) || [];
-}
-
-export function saveCart(cart){
-    localStorage.setItem("cart", JSON.stringify(cart));
-}
-
-export function getToken(){
-    return localStorage.getItem("access_token");
-}
-
-export function setToken(token) {
-    localStorage.setItem("access_token", token);
-}
-
-export function removeToken() {
-    localStorage.removeItem("access_token");
-}
-
-
-
-)
-
-admin.js(
-
-import { apiResquest } from "../core/api.js";
-
-function checkAdmin() {
-    const token = localStorage.getItem("token");
-
-    if (!token) {
-        alert("No autorizado");
-        window.location.href = "login.html";
-    }
-}
-
-export function initAdmin() {
-    checkAdmin();
-    document.getElementById("createBtn").addEventListener("click", async () => {
-        try{
-            const name = document.getElementById("name").value;
-            const price = parseFloat(document.getElementById("price").value);
-
-            await apiResquest("/admin/products", "POST",{
-                name,
-                price,
-                image: "",
-                category_id: null
-            });
-            alert("Producto creado");
-        } catch (error){
-            alert("Error: necesitas ser admin");
-        }
-    });
-}
-
-
-)
-cart.js(
-
-import { renderCart } from "../ui/cartUI.js";
-
-export function cargarCart(){
-    const contenedor = document.getElementById("cart-items");
-    renderCart(contenedor);
-}
+Mode                 LastWriteTime         Length Name                                                                                   
+----                 -------------         ------ ----                                                                                   
+d-----        07/04/2026     15:46                __pycache__                                                                            
+-a----        30/03/2026     16:00           1866 admin.py                                                                               
+-a----        05/04/2026      1:22            925 auth.py                                                                                
+-a----        07/04/2026     15:46           1178 orders.py                                                                              
+-a----        24/03/2026     16:29            406 products.py                                                                            
+
+
+    Directorio: C:\Users\roman\Documents\auto-estudio\JavaScript\tienda_practica\backend\app\routers\__pycache__
+
+
+Mode                 LastWriteTime         Length Name                                                                                   
+----                 -------------         ------ ----                                                                                   
+-a----        30/03/2026     16:00           2607 admin.cpython-313.pyc                                                                  
+-a----        05/04/2026      1:22           1782 auth.cpython-313.pyc                                                                   
+-a----        07/04/2026     15:46           1919 orders.cpython-313.pyc                                                                 
+-a----        25/03/2026     23:51            856 products.cpython-313.pyc                                                               
+
+
+    Directorio: C:\Users\roman\Documents\auto-estudio\JavaScript\tienda_practica\backend\app\schemas
+
+
+Mode                 LastWriteTime         Length Name                                                                                   
+----                 -------------         ------ ----                                                                                   
+d-----        10/04/2026     15:19                __pycache__                                                                            
+-a----        07/04/2026     16:17            493 order_schema.py                                                                        
+-a----        04/04/2026     14:52            469 product_schema.py                                                                      
+-a----        10/04/2026     15:19            462 user_schema.py                                                                         
+
+
+    Directorio: C:\Users\roman\Documents\auto-estudio\JavaScript\tienda_practica\backend\app\schemas\__pycache__
+
+
+Mode                 LastWriteTime         Length Name                                                                                   
+----                 -------------         ------ ----                                                                                   
+-a----        07/04/2026     16:17           1758 order_schema.cpython-313.pyc                                                           
+-a----        04/04/2026     14:52           1539 product_schema.cpython-313.pyc                                                         
+-a----        10/04/2026     15:19           1485 user_schema.cpython-313.pyc                                                            
+
+
+    Directorio: C:\Users\roman\Documents\auto-estudio\JavaScript\tienda_practica\backend\app\services
+
+
+Mode                 LastWriteTime         Length Name                                                                                   
+----                 -------------         ------ ----                                                                                   
+d-----        07/04/2026     16:18                __pycache__                                                                            
+-a----        07/04/2026     16:18           1331 order_service.py                                                                       
+-a----        05/04/2026     22:46           1645 product_service.py                                                                     
+-a----        05/04/2026      1:20            679 user_service.py                                                                        
+
+
+    Directorio: C:\Users\roman\Documents\auto-estudio\JavaScript\tienda_practica\backend\app\services\__pycache__
+
+
+Mode                 LastWriteTime         Length Name                                                                                   
+----                 -------------         ------ ----                                                                                   
+-a----        07/04/2026     16:18           2261 order_service.cpython-313.pyc                                                          
+-a----        05/04/2026     22:46           2860 product_service.cpython-313.pyc                                                        
+-a----        05/04/2026      1:24           1369 user_service.cpython-313.pyc                                                           
+
+
+    Directorio: C:\Users\roman\Documents\auto-estudio\JavaScript\tienda_practica\backend\app\static
+
+
+Mode                 LastWriteTime         Length Name                                                                                   
+----                 -------------         ------ ----                                                                                   
+d-----        10/04/2026     15:22                imagen                                                                                 
+
+
+    Directorio: C:\Users\roman\Documents\auto-estudio\JavaScript\tienda_practica\backend\app\static\imagen
+
+
+Mode                 LastWriteTime         Length Name                                                                                   
+----                 -------------         ------ ----                                                                                   
+d-----        10/04/2026     15:24                users                                                                                  
+
+
+    Directorio: C:\Users\roman\Documents\auto-estudio\JavaScript\tienda_practica\backend\app\static\imagen\users
+
+
+Mode                 LastWriteTime         Length Name                                                                                   
+----                 -------------         ------ ----                                                                                   
+-a----        10/04/2026     15:23          63098 default.jpg                                                                            
+
+
+    Directorio: C:\Users\roman\Documents\auto-estudio\JavaScript\tienda_practica\backend\app\__pycache__
+
+
+Mode                 LastWriteTime         Length Name                                                                                   
+----                 -------------         ------ ----                                                                                   
+-a----        07/04/2026     16:03           1267 main.cpython-313.pyc                                                                   
+
+
+    Directorio: C:\Users\roman\Documents\auto-estudio\JavaScript\tienda_practica\frontend
+
+
+Mode                 LastWriteTime         Length Name                                                                                   
+----                 -------------         ------ ----                                                                                   
+d-----        22/03/2026     15:57                public                                                                                 
+
+
+    Directorio: C:\Users\roman\Documents\auto-estudio\JavaScript\tienda_practica\frontend\public
+
+
+Mode                 LastWriteTime         Length Name                                                                                   
+----                 -------------         ------ ----                                                                                   
+d-----        10/04/2026     15:34                assets                                                                                 
+d-----        22/03/2026     16:00                components                                                                             
+d-----        07/04/2026     17:02                js                                                                                     
+d-----        22/03/2026     16:00                pages                                                                                  
+d-----        22/03/2026     15:58                style                                                                                  
+
+
+    Directorio: C:\Users\roman\Documents\auto-estudio\JavaScript\tienda_practica\frontend\public\components
+
+
+Mode                 LastWriteTime         Length Name                                                                                   
+----                 -------------         ------ ----                                                                                   
+-a----        25/03/2026     15:40             44 footer.html                                                                            
+-a----        09/04/2026     15:58           1140 header.html                                                                            
+
+
+    Directorio: C:\Users\roman\Documents\auto-estudio\JavaScript\tienda_practica\frontend\public\js
+
+
+Mode                 LastWriteTime         Length Name                                                                                   
+----                 -------------         ------ ----                                                                                   
+d-----        09/04/2026     16:01                core                                                                                   
+d-----        02/04/2026     21:26                pages                                                                                  
+d-----        25/03/2026      1:28                services                                                                               
+d-----        07/04/2026     17:02                state                                                                                  
+d-----        25/03/2026      1:29                ui                                                                                     
+d-----        07/04/2026     17:02                utils                                                                                  
+-a----        04/04/2026     15:36            657 main.js                                                                                
+
+
+    Directorio: C:\Users\roman\Documents\auto-estudio\JavaScript\tienda_practica\frontend\public\js\core
+
+
+Mode                 LastWriteTime         Length Name                                                                                   
+----                 -------------         ------ ----                                                                                   
+-a----        02/04/2026      1:44           1520 api.js                                                                                 
+-a----        09/04/2026     16:06            553 authUI.js                                                                              
+-a----        02/04/2026      2:28            641 components.js                                                                          
+-a----        31/03/2026      1:46            119 config.js                                                                              
+-a----        02/04/2026      1:52            447 storage.js                                                                             
+
+
+    Directorio: C:\Users\roman\Documents\auto-estudio\JavaScript\tienda_practica\frontend\public\js\pages
+
+
+Mode                 LastWriteTime         Length Name                                                                                   
+----                 -------------         ------ ----                                                                                   
+-a----        25/03/2026      2:38            856 admin.js                                                                               
+-a----        31/03/2026      1:15            173 cart.js                                                                                
+-a----        02/04/2026      2:31            708 home.js                                                                                
+-a----        31/03/2026     15:36            799 login.js                                                                               
+-a----        05/04/2026      1:27           1349 register.js                                                                            
+
+
+    Directorio: C:\Users\roman\Documents\auto-estudio\JavaScript\tienda_practica\frontend\public\js\services
+
+
+Mode                 LastWriteTime         Length Name                                                                                   
+----                 -------------         ------ ----                                                                                   
+-a----        04/04/2026     14:41            220 authService.js                                                                         
+-a----        30/03/2026     20:32            124 orderService.js                                                                        
+-a----        01/04/2026     15:49            113 productService.js                                                                      
+
+
+    Directorio: C:\Users\roman\Documents\auto-estudio\JavaScript\tienda_practica\frontend\public\js\ui
+
+
+Mode                 LastWriteTime         Length Name                                                                                   
+----                 -------------         ------ ----                                                                                   
+-a----        02/04/2026      2:22            510 cartUI.js                                                                              
+-a----        30/03/2026     20:49            387 productUI.js                                                                           
+
+
+    Directorio: C:\Users\roman\Documents\auto-estudio\JavaScript\tienda_practica\frontend\public\pages
+
+
+Mode                 LastWriteTime         Length Name                                                                                   
+----                 -------------         ------ ----                                                                                   
+-a----        25/03/2026      2:28            515 admin.html                                                                             
+-a----        05/04/2026     15:40            608 cart.html                                                                              
+-a----        05/04/2026     15:10            562 index.html                                                                             
+-a----        02/04/2026      2:17            843 login.html                                                                             
+-a----        05/04/2026     14:50           1084 register.html                                                                          
+
+
+    Directorio: C:\Users\roman\Documents\auto-estudio\JavaScript\tienda_practica\frontend\public\style
+
+
+Mode                 LastWriteTime         Length Name                                                                                   
+----                 -------------         ------ ----                                                                                   
+-a----        09/04/2026     16:53           2865 style.css                                                                              
+
+
+PS C:\Users\roman\Documents\auto-estudio\JavaScript\tienda_practica> 
 
 )
 
-home.js(
+main.py(
 
-import { getProducts } from "../services/productService.js"
-import { crearProducto } from "../ui/productUI.js"
+from fastapi import FastAPI
+from app.routers import auth, products , admin, orders
+from fastapi.middleware.cors import CORSMiddleware
+from fastapi.staticfiles import StaticFiles
 
-async function mostrarProductos() {
-    const productos = await getProducts();
-    console.log(productos);
-}
-mostrarProductos();
+from app.db.database import engine
+from app.db.base import Base
 
-export async function cargarHome() {
-    const contenedor = document.getElementById("productos");
-    contenedor.innerHTML = "<p>cargando productos...</p>";
-    const productos = await getProducts();
-    contenedor.innerHTML = "";
-    if (!productos.length){
-        contenedor.innerHTML = "<p>No hay productos disponibles</p>";
-        return;
-    }
-    productos.forEach(prod => {
-        contenedor.appendChild(crearProducto(prod));
-    });
-}
+import app.models.product
+import app.models.category
+import app.models.order
+import app.models.order_item
+import app.models.user
 
+app = FastAPI(title="Tienda de Ropa")
+
+app.mount("/static", StaticFiles(directory="app/static"), name="static")
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
 )
-login.js(
 
-import { loginUser } from "../services/authService.js";
+Base.metadata.create_all(bind=engine)
 
-export function initLogin(){
-    const form = document.getElementById("login-form");
-    const errorEl = document.getElementById("login-error")
-    form.addEventListener("submit", async e =>{
-        e.preventDefault();
-        
-        const email = form.email.value;
-        const password = form.password.value;
-        
-        errorEl.textContent = "Cargando..."
-
-        const res = await loginUser({ email, password });
-        if (res && res.access_token) {
-            localStorage.setItem("access_token", res.access_token);
-            localStorage.setItem("user",email)
-            window.location.href = "index.html";
-        }else{
-            alert("Usuario o contraceña incorrectas");
-        }
-    });
-}
+app.include_router(auth.router)
+app.include_router(products.router)
+app.include_router(admin.router)
+app.include_router(orders.router)
 
 )
 
-register.js(
+config.py(vacio)
 
-import { registerUser } from "../services/authService.js"
+security.py(
 
-const form = document.getElementById("registerForm");
-const error = document.getElementById("error");
+import os
+from passlib.context import CryptContext
+from datetime import datetime, timedelta
+from jose import jwt, JWTError
+from dotenv import load_dotenv
 
-form.addEventListener("submit", async (e) => {
-    e.preventDefault();
+load_dotenv()
 
-    const username = document.getElementById("username").value;
-    const email = document.getElementById("email").value;
-    const password = document.getElementById("password").value;
+SECRET_KEY = os.getenv("SECRET_KEY")
+ALGORITHM = "HS256"
+ACCESS_TOKEN_EXPIRE_MINUTES = int(os.getenv("ACCESS_TOKEN_EXPIRE_MINUTES", 60))
 
-    try {
-        await registerUser({
-            username,
-            email,
-            password
-        });
+pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 
-        alert("Usuario registrado correctamente");
+def hash_password(password: str):
+    return pwd_context.hash(password)
 
-        window.location.href = "login.html";
-    }catch (err) {
-        error.textContent = "Error al registrar usuario";
-    }
-});
+def verify_password(plain, hashed):
+    return pwd_context.verify(plain,hashed)
+
+def create_access_token(data: dict):
+    to_encode = data.copy()
+    expire = datetime.utcnow() + timedelta(minutes=ACCESS_TOKEN_EXPIRE_MINUTES)
+    to_encode.update({"exp": expire})
+    return jwt.encode(to_encode, SECRET_KEY,algorithm=ALGORITHM)
+
+def decode_access_token(token: str):
+    try:
+        return jwt.decode(token,SECRET_KEY,algorithms=[ALGORITHM])
+    except JWTError:
+        return None
 
 )
-authService.js(
+base.py(
 
-import { postData } from "../core/api.js";
+from sqlalchemy.orm import declarative_base
 
-export function loginUser(data){
-    return postData("auth/login", data);
-}
+Base = declarative_base()
 
-export async function registerUser(userData) {
+)
+database.py(
+
+import os
+from sqlalchemy import create_engine
+from sqlalchemy.orm import sessionmaker
+from dotenv import load_dotenv
+
+#Cargar variables del .env
+load_dotenv(os.path.join(os.path.dirname(__file__),"../../.env"))
+
+DB_USER = os.getenv("DB_USER")
+DB_PASSWORD = os.getenv("DB_PASSWORD")
+DB_HOST = os.getenv("DB_HOST")
+DB_PORT = os.getenv("DB_PORT")
+DB_NAME = os.getenv("DB_NAME")
+
+SQLALCHEMY_DATABASE_URL = f"mysql+pymysql://{DB_USER}:{DB_PASSWORD}@{DB_HOST}:{DB_PORT}/{DB_NAME}"
+
+engine = create_engine(SQLALCHEMY_DATABASE_URL, pool_pre_ping=True)
+SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
+
+def get_db():
+    db = SessionLocal()
+    try:
+        yield db
+    finally:
+        db.close()
+
+print("DB_PORT:", DB_PORT)
+
+)
+
+category.py(
+
+from sqlalchemy import Column, Integer, String
+from ..db.base import Base
+
+class Category(Base):
+    __tablename__ = "categories"
+
+    id = Column(Integer, primary_key=True)
+    name = Column(String(100), nullable=False)
+
+)
+order_item.py(
+
+from sqlalchemy import Column, Integer, ForeignKey, DECIMAL
+from ..db.base import Base
+
+class OrderItem(Base):
+    __tablename__ = "order_items"
+
+    id = Column(Integer, primary_key=True)
+    order_id = Column(Integer, ForeignKey("orders.id"))
+    product_id = Column(Integer, ForeignKey("products.id"))
+    quantity = Column(Integer, default=1)
+    price = Column(DECIMAL(10,2), nullable=False)
+
+)
+order.py(
+
+from sqlalchemy import Column, Integer, DECIMAL, ForeignKey
+from sqlalchemy.orm import relationship
+from ..db.base import Base
+
+class Order(Base):
+    __tablename__ = "orders"
+
+    id = Column(Integer, primary_key=True)
+    user_id = Column(Integer, ForeignKey("users.id"))
+    total = Column(DECIMAL(10,2), nullable=False)
+
+    items = relationship("OrderItem", backref="order")
+
+)
+product.py(
+
+from sqlalchemy import Column, Integer, String, DECIMAL, ForeignKey, Text
+from ..db.base import Base
+
+class Product(Base):
+    __tablename__ = "products"
+
+    id = Column(Integer, primary_key=True)
+    name = Column(String(255),nullable=False)
+    description = Column(Text)
+    price = Column(DECIMAL(10,2), nullable=False)
+    stock = Column(Integer, default=0)
+    image = Column(String(255))
+    category_id = Column(Integer, ForeignKey("categories.id"))
+
+)
+user.py(
+
+from sqlalchemy import Column, Integer,String, Enum
+from ..db.base import Base
+
+class User(Base):
+    __tablename__ = "users"
+
+    id = Column(Integer, primary_key=True, index=True)
+    email = Column(String(255), unique=True, nullable=False)
+    password_hash = Column(String(255), nullable=False)
+    role = Column(Enum('cliente', 'admin'), default='cliente')
+    nombre = Column(String(255))
+    apellido = Column(String(255))
+    imagen = Column(String(255), default="/static/imagen/users/default.jpg")
+
+)
+
+admin.py(
+
+from fastapi import APIRouter, Depends, HTTPException
+from fastapi.security import HTTPBearer, HTTPAuthorizationCredentials
+from sqlalchemy.orm import Session
+from ..db.database import get_db
+from ..services import product_service
+from ..schemas.product_schema import ProductCreate, ProductOut
+from ..core.security import decode_access_token
+
+
+router = APIRouter(prefix="/admin", tags=["admin"])
+security = HTTPBearer()
+
+# Dependencia para verificar rol admin
+def get_current_admin(credentials: HTTPAuthorizationCredentials = Depends(security)):
+    token =  credentials.credentials
+    try:
+        payload = decode_access_token(token)
+    except:
+        raise HTTPException(status_code=401, detail="Token inválido")
     
-    const response = await fetch("http://localhost:3000/users",{
-        method: "POST",
-        headers: {"Content-Type": "application/json"},
-        body: JSON.stringify(userData)
-    });
-    if (!response.ok){
-        throw new Error("Error en el registro");
-    }
-    return await response.json();
-}
+    if not payload or payload.get("role") != "admin":
+        raise HTTPException(status_code=403, detail="No autorizado")
+    return payload
+
+@router.post("/products", response_model=ProductOut)
+def create_product(
+    product: ProductCreate, 
+    db: Session = Depends(get_db),
+    admin = Depends(get_current_admin)
+    ):
+
+    return product_service.create_product(db, product)
+@router.put("/products/{product_id}", response_model=ProductOut)
+def update_product(
+    product_id: int, 
+    product: ProductCreate ,
+    db: Session = Depends(get_db), 
+    admin=Depends(get_current_admin)
+    ):
+
+    update_product = product_service.update_product(
+        db,
+        product_id,
+        product.model_dump(exclude_unset=True)
+    )
+
+    if not update_product:
+        raise HTTPException(status_code=404, detail="Producto no encontrado")
+    return update_product
+
+
+@router.delete("/products/{product_id}")
+def delete_product(product_id: int, 
+    db: Session = Depends(get_db),
+    admin=Depends(get_current_admin)
+    ):
+    return product_service.delete_product(db, product_id)
 
 )
-orderService.js(
+auth.py(
 
-import { postData } from "../core/api.js";
+from fastapi import APIRouter, Depends, HTTPException, UploadFile, File, Form
+import os
+from sqlalchemy.orm import Session
+from ..db.database import get_db
+from ..schemas.user_schema import UserCreate, UserLogin, UserOut
+from ..services import user_service
+from ..core.security import create_access_token
 
-export function createOrder(order){
-    return postData("pedidos", order);
-}
+router = APIRouter(prefix="/auth", tags=["auth"])
 
-)
-productService.js(
+@router.post("/register", response_model=UserOut)
+def register(user: UserCreate, db: Session = Depends(get_db)):
+    return user_service.create_user(db, user.email, user.password, user.nombre, user.apellido, user.imagen)
 
-import {  getData } from "../core/api.js";
+@router.post("/login")
+def login(user: UserLogin, db: Session = Depends(get_db)):
+    db_user = user_service.authenticate_user(db, user.email, user.password)
 
-export function getProducts() {
-    return getData("products");
-}
-
-)
-
-cartUI.js(
-
-import { loadCart, saveCart } from "../core/storage.js";
-
-export function renderCart(container){
-    const cart = loadCart();
-    container.innerHTML = "";
-    if (cart.length === 0){
-        container.innerHTML = "<p>El carrito está vacío</p>";
-        return;
-    }
-    cart.forEach(item => {
-        const div = document.createElement("div");
-        div.classList.add("cart-item");
-        div.innerHTML = `${item.nombre} - ${item.precio}€`;
-        container.appendChild(div);
-    });
-}
+    if not db_user:
+        raise HTTPException(status_code=400, detail="Credenciales incorrectos")
+    
+    token = create_access_token({"id": db_user.id, "role": db_user.role})
+    return {"access_token": token}
 
 )
-productUI.js(
+orders.py(
 
+from fastapi import APIRouter, Depends, HTTPException, Header
+from fastapi.security import HTTPBearer, HTTPAuthorizationCredentials
+from sqlalchemy.orm import Session
+from ..db.database import get_db
+from ..services import order_service
+from ..schemas.order_schema import OrderCreate, OrderOut
+from ..core.security import decode_access_token
 
-export function crearProducto(producto) {
-    const div = document.createElement("div");
-    div.classList.add("producto");
-    div.innerHTML = `
-        <img src="${producto.imagen}" alt="${producto.nombre}">
-        <h2>${producto.nombre}</h2>
-        <p>${producto.precio}€</p>
-        <button data-id="${producto.id}">Añadir al carrito</button>
-    `;
-    return div
-}
+router = APIRouter(prefix="/orders", tags=["orders"])
+
+security = HTTPBearer()
+#Dependencia para usuario autenticado
+def get_current_user(credentials: HTTPAuthorizationCredentials = Depends(security)):
+
+    token = credentials.credentials
+
+    payload = decode_access_token(token)
+    
+    if not payload:
+        raise HTTPException(status_code=401, detail="Token inválido")
+    return payload
+
+@router.post("/", response_model=OrderOut)
+def create_order(order: OrderCreate, db: Session = Depends(get_db), user=Depends(get_current_user)):
+    return order_service.create_order(db, user["id"], order.items)
+
+@router.get("/my-orders", response_model=list[OrderOut])
+def get_my_orders(db: Session = Depends(get_db), user=Depends(get_current_user)):
+    return order_service.get_orders_by_user(db, user["id"])
+    
+)
+products.py(
+
+from fastapi import APIRouter, Depends
+from sqlalchemy.orm import Session
+from ..db.database import get_db
+from ..services import product_service
+from ..schemas.product_schema import ProductOut
+
+router = APIRouter(prefix="/products", tags=["products"])
+
+@router.get("/", response_model=list[ProductOut])
+def get_products(db: Session = Depends(get_db)):
+    return product_service.get_products(db)
 
 )
 
-admin.html(
+order_schema.py (
 
-<body>
-    <div id="header"></div>
+from pydantic import BaseModel
+from typing import List
 
-    <main>
-        <h2>Admin Dashboard</h2>
+class OrderItemCreate(BaseModel):
+    product_id: int
+    quantity: int
 
-        <input id="name" placeholder="Nombre">
-        <input id="price" placeholder="Precio">
+class OrderItemOut(BaseModel):
+    product_id: int
+    quantity: int
+    price: float
 
-        <hr>
-        <button id="createBtn">Crear producto</button>
-    </main>
-    <div id="footer"></div>
+    class Config:
+        from_attributes = True
 
-    <script type="module">
-        import { initLayout } from "../js/main.js";
-        import { initAdmin } from "../js/pages/admin.js";
+class OrderCreate(BaseModel):
+    items: List[OrderItemCreate]
 
-        await initLayout();
-        initAdmin();
-    </script>
-</body>
+class OrderOut(BaseModel):
+    id: int
+    total: float
+    items: List[OrderItemOut]
+
+    class Config:
+        from_attributes = True
 
 )
-cart.html(
 
-<body>
-    <div id="header"></div>
+product_schema.py(
 
-    <main>
-        <h2>Carrito</h2>
-        <div id="cart"></div>
-    </main>
+from pydantic import BaseModel, Field
 
-    <div id="footer"></div>
-    <script type="module">
-        import { initLayout } from "../js/main.js";
-        import { initCart } from "../js/pages/cart.js";
+class ProductBase(BaseModel):
+    name: str = Field(min_length=1, max_length=100)
+    price: float = Field(gt=0, description="Precio del producto")
+    image: str | None = None
+    category_id: int | None = None
+    description: str | None = None
+    stock: int = Field(gt=0)
+
+class ProductCreate(ProductBase):
+    pass
+
+class ProductOut(ProductBase):
+    id: int
+
+    class Config:
+        from_attributes = True
+
+)
+user_schema.py(
+
+from pydantic import BaseModel, EmailStr
+from typing import Optional
+
+class UserCreate(BaseModel):
+    nombre: str
+    apellido: str
+    email: EmailStr
+    password: str
+    imagen: Optional[str] =None
+
+class UserLogin(BaseModel):
+    email: str
+    password: str
+
+class UserOut(BaseModel):
+    id: int
+    email: str
+    role: str
+    nombre: str
+    apellido: str
+    imagen: str | None
+
+    class Config:
+        from_attributes = True
+
+)
+
+
+order_service.py(
+
+from fastapi import HTTPException
+from ..models.order import Order
+from sqlalchemy.orm import Session
+from ..models.order_item import OrderItem
+from app.models.product import Product
+from typing import List
+from app.schemas.order_schema import OrderItemCreate
+
+def create_order(db: Session, user_id: int, items: List[OrderItemCreate]):
+
+    total = 0
+    order = Order(user_id=user_id, total=0)
+    db.add(order)
+    db.commit()
+    db.refresh(order)
+
+    for item in items:
+        product = db.get(Product, item.product_id)
         
-        await initLayout();
-        initCart();
-    </script>
-</body>
+        if not product:
+            raise HTTPException(status_code=404, detail="Producto no encontrado")
+        
+        if product.stock < item.quantity:
+            raise HTTPException(status_code=400, detail="Stock insuficiente")
+        product.stock -= item.quantity
+
+        subtotal = product.price * item.quantity
+        total += subtotal
+
+        order_item = OrderItem(
+            order_id=order.id,
+            product_id=product.id,
+            quantity=item.quantity,
+            price=product.price
+        )
+        db.add(order_item)
+
+    order.total = total
+    db.commit()
+    db.refresh(order)
+    return order
+
+def get_orders_by_user(db: Session, user_id: int):
+    return db.query(Order).filter(Order.user_id  == user_id).all() 
 
 )
-index.html(
+product_service.py(
 
-<body>
-    <div id="header"></div>
+from fastapi import HTTPException
+from sqlalchemy.orm import Session
+from app.models.product import Product
+from app.schemas.product_schema import ProductCreate
 
-    <main>
-        <h1>Tienda</h1>
-        <div id="products"></div>
-    </main>
+def get_products(db: Session, skip: int = 0, limit: int = 10):
+    return db.query(Product).offset(skip).limit(limit).all()
 
-    <div id="footer"></div>
+def get_product_by_id(db: Session, product_id: int):
+    product = db.get(Product, product_id)
 
-    <script type="module">
-        import { initLayout } from "../js/main.js";
-        import { initHome } from "../js/pages/home.js";
+    if not product:
+        raise HTTPException(status_code=404, detail="producto no encontrado")
+    return product
 
-        await initLayout();
-        await initHome();
-    </script>
-</body>
+def create_product(db: Session, product: ProductCreate):
+    
+    if product.price <= 0:
+        raise HTTPException(status_code=400, detail="Precio invalido")
 
-)
-login.html(
+    if product.stock < 0:
+        raise HTTPException(status_code=400, detail="Stock no puede ser negativo")
+    
 
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
-    <link rel="stylesheet" href="../style/style.css">
-</head>
-<body>
-    <header></header>
+    new_product = Product(**product.dict())
+    db.add(new_product)
+    db.commit()
+    db.refresh(new_product)
+    return new_product
 
-    <main class="login-container">
-        <form id="login-form" class="login-box">
-            <h2>Iniciar sesión</h2>
+def update_product(db: Session, product_id: int, data: ProductCreate):
+    product = db.get(Product, product_id)
 
-            <label>Email</label>
-            <input type="email" name="email" required>
-            <hr>
-            <label>Contrace&#241;a</label>
-            <input type="password" name="password" required>
+    if not product:
+        raise HTTPException(status_code=404, detail="Producto no encontrado")
+    
+    for key, value in data.dict(exclude_unset=True).items():
+        setattr(product, key, value)
 
-            <button type="submit">Entrar</button>
+    db.commit()
+    db.refresh(product)
 
-            <p class="Error" id="login-error"></p>
-        </form>
-    </main>
-    <footer></footer>
-    <script type="module" src="../js/main.js"></script>
-</body>
-</html>
+    return product
+    
+def delete_product(db: Session, product_id: int):
+    product = db.get(Product, product_id)
 
-)
-
-register.html(
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <link rel="stylesheet" href="../style/style.css">
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Register</title>
-</head>
-<body>
-    <div id="header"></div>
-    <main>
-        <div class="login-container">
-            <form id="registerForm" class="login-box">
-                <h2>Registro</h2>
-
-                <label>Nombre</label>
-                <input type="text" id="username" required>
-
-                <label>Email</label>
-                <input type="email" id="email" required>
-
-                <label>Contrace&#241;a</label>
-                <input type="password" id="password" required>
-
-                <button type="submit">Registrase</button>
-
-                <p id="error" class="error"></p>
-            </form>
-        </div>
-    </main>
-    <div id="footer"></div>
-
-    <script type="module" src="../js/main.js"></script>
-</body>
-</html>
+    if not product:
+        raise HTTPException(status_code=404, detail="Producto no encontrado")
+    
+    db.delete(product)
+    db.commit()
+    
+    return {"message": "Producto eliminado correctamente"}
 
 )
-style.css(
 
-html, body {
-    height: 100%;
-}
+user_service.py(
 
-body {
-    font-family: Arial, Helvetica, sans-serif;
-    margin: 0;
-    background: #f4f4f4;
-    display: flex;
-    flex-direction: column;
-}
-main {
-    flex: 1;
-    max-width: 1100px;
-    margin: 0;
-    padding: 20px;
-}
-
-/*esot es el header*/
-
-header {
-    background: #222;
-    color: #ccc;
-    padding: 15px 40px;
-
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-header h2 {
-    margin: 0;
-    font-size: 1.6rem;
-    margin-right: 40px;
-}
-header div{
-    text-align: left ;
-}
-header nav {
-    display: flex;
-    gap: 20px;
-    align-items: center;
-}
-header nav a {
-    color: white;
-    text-decoration: none;
-    font-size: 0.95rem;
-    transition: 0.2s;
-}
-header nav a:hover {
-    color: #f0c040;
-}
-
-/*Button*/
-
-#logoutBtn {
-    background: #f44336;
-    border: none;
-    color: #ccc;
-    padding: 6px 12px;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-/*Footer*/
-footer {
-    background: #222;
-    color: #ccc;
-    text-align: center;
-    padding: 15px;
-    margin-top: 40px;
-}
-
-footer p {
-    margin: 0;
-    font-size: 0.9rem;
-}
+from sqlalchemy.orm import Session
+from ..models.user import User
+from ..core.security import hash_password, verify_password
 
 
-/*Esto es el estilo de login*/
-.login-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 80vh;
-}
+def create_user(db: Session, email: str, password: str, nombre: str, apellido: str):
+    hashed = hash_password(password)
+    user = User(email=email, password_hash=hashed, nombre=nombre, apellido=apellido)
+    db.add(user)
+    db.commit()
+    db.refresh(user)
+    return user
 
-.login-box {
-    background: white;
-    padding: 30px;
-    border-radius: 10px;
-    width: 300px;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
-}
+def authenticate_user(db: Session, email: str, password: str):
+    user = db.query(User).filter(User.email == email).first()
+    if not user:
+        return None
+    if not verify_password(password, user.password_hash):
+        return None
+    return user
 
-.login-box h2 {
-    text-align: center;
-}
+) 
 
-.login-box input {
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-}
+busca el problema del que tengo con los usuarios a la hora de registrarme, es que modifiique para agregar una imagen para el usuario y no me gusta, por ende prefiero crear el usuario y luego aparte se podremos subir una imagen, pero la imagen por defecto que esta se utilizara y solo desde la configuracion del usuario se modificara 
 
-.login-box button {
-    padding: 10px;
-    border: none;
-    background: #222;
-    color: white;
-    cursor: pointer;
-    border-radius: 5px;
-    transition: 0.3s;
-}
-.login-box button:hover{
-    background: #444;
-}
-.error {
-    color: red;
-    font-size: 0.9rem;
-    text-align: center;
-}
 
-)
+
+PS C:\Users\roman\Documents\auto-estudio\JavaScript\tienda_practica\backend> uvicorn app.main:app --reload
+INFO:     Will watch for changes in these directories: ['C:\\Users\\roman\\Documents\\auto-estudio\\JavaScript\\tienda_practica\\backend']
+INFO:     Uvicorn running on http://127.0.0.1:8000 (Press CTRL+C to quit)
+INFO:     Started reloader process [16248] using StatReload
+DB_PORT: 3306
+INFO:     Started server process [7296]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     127.0.0.1:59267 - "POST /auth/register HTTP/1.1" 500 Internal Server Error
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "C:\Users\roman\AppData\Local\Programs\Python\Python313\Lib\site-packages\uvicorn\protocols\http\h11_impl.py", line 410, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        self.scope, self.receive, self.send
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\roman\AppData\Local\Programs\Python\Python313\Lib\site-packages\uvicorn\middleware\proxy_headers.py", line 60, in __call__
+    return await self.app(scope, receive, send)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\roman\AppData\Local\Programs\Python\Python313\Lib\site-packages\fastapi\applications.py", line 1160, in __call__
+    await super().__call__(scope, receive, send)
+  File "C:\Users\roman\AppData\Local\Programs\Python\Python313\Lib\site-packages\starlette\applications.py", line 90, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "C:\Users\roman\AppData\Local\Programs\Python\Python313\Lib\site-packages\starlette\middleware\errors.py", line 186, in __call__
+    raise exc
+  File "C:\Users\roman\AppData\Local\Programs\Python\Python313\Lib\site-packages\starlette\middleware\errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "C:\Users\roman\AppData\Local\Programs\Python\Python313\Lib\site-packages\starlette\middleware\cors.py", line 96, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+  File "C:\Users\roman\AppData\Local\Programs\Python\Python313\Lib\site-packages\starlette\middleware\cors.py", line 154, in simple_response
+    await self.app(scope, receive, send)
+  File "C:\Users\roman\AppData\Local\Programs\Python\Python313\Lib\site-packages\starlette\middleware\exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "C:\Users\roman\AppData\Local\Programs\Python\Python313\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "C:\Users\roman\AppData\Local\Programs\Python\Python313\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "C:\Users\roman\AppData\Local\Programs\Python\Python313\Lib\site-packages\fastapi\middleware\asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "C:\Users\roman\AppData\Local\Programs\Python\Python313\Lib\site-packages\starlette\routing.py", line 660, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "C:\Users\roman\AppData\Local\Programs\Python\Python313\Lib\site-packages\starlette\routing.py", line 680, in app
+    await route.handle(scope, receive, send)
+  File "C:\Users\roman\AppData\Local\Programs\Python\Python313\Lib\site-packages\starlette\routing.py", line 276, in handle
+    await self.app(scope, receive, send)
+  File "C:\Users\roman\AppData\Local\Programs\Python\Python313\Lib\site-packages\fastapi\routing.py", line 130, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "C:\Users\roman\AppData\Local\Programs\Python\Python313\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "C:\Users\roman\AppData\Local\Programs\Python\Python313\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "C:\Users\roman\AppData\Local\Programs\Python\Python313\Lib\site-packages\fastapi\routing.py", line 116, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "C:\Users\roman\AppData\Local\Programs\Python\Python313\Lib\site-packages\fastapi\routing.py", line 670, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "C:\Users\roman\AppData\Local\Programs\Python\Python313\Lib\site-packages\fastapi\routing.py", line 326, in run_endpoint_function
+    return await run_in_threadpool(dependant.call, **values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\roman\AppData\Local\Programs\Python\Python313\Lib\site-packages\starlette\concurrency.py", line 32, in run_in_threadpool
+    return await anyio.to_thread.run_sync(func)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\roman\AppData\Local\Programs\Python\Python313\Lib\site-packages\anyio\to_thread.py", line 63, in run_sync
+    return await get_async_backend().run_sync_in_worker_thread(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        func, args, abandon_on_cancel=abandon_on_cancel, limiter=limiter
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\roman\AppData\Local\Programs\Python\Python313\Lib\site-packages\anyio\_backends\_asyncio.py", line 2502, in run_sync_in_worker_thread
+    return await future
+           ^^^^^^^^^^^^
+  File "C:\Users\roman\AppData\Local\Programs\Python\Python313\Lib\site-packages\anyio\_backends\_asyncio.py", line 986, in run
+    result = context.run(func, *args)
+  File "C:\Users\roman\Documents\auto-estudio\JavaScript\tienda_practica\backend\app\routers\auth.py", line 13, in register
+    return user_service.create_user(db, user.email, user.password, user.nombre, user.apellido, user.imagen)
+           ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: create_user() takes 5 positional arguments but 6 were given

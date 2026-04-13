@@ -14,9 +14,14 @@ def get_product_by_id(db: Session, product_id: int):
     return product
 
 def create_product(db: Session, product: ProductCreate):
+    
+    if product.price <= 0:
+        raise HTTPException(status_code=400, detail="Precio invalido")
+
     if product.stock < 0:
         raise HTTPException(status_code=400, detail="Stock no puede ser negativo")
     
+
     new_product = Product(**product.dict())
     db.add(new_product)
     db.commit()

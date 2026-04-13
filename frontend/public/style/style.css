@@ -1,83 +1,136 @@
+/*RESET BÁSICO*/
+
 html, body {
     height: 100%;
 }
-
 body {
     font-family: Arial, Helvetica, sans-serif;
     margin: 0;
     background: #f4f4f4;
+
     display: flex;
     flex-direction: column;
 }
+/*MAIN*/
+
 main {
     flex: 1;
     max-width: 1100px;
-    margin: 0;
+    margin: auto;
     padding: 20px;
 }
+/*===========================
+    HEADER 
+=============================*/
 
-/*esot es el header*/
-
-header {
+.header {
     background: #222;
     color: #ccc;
     padding: 15px 40px;
-
+}
+.header-container {
+    max-width: 1100px;
+    margin: auto;
     display: flex;
-    justify-content: space-between;
     align-items: center;
+    justify-content: space-between;
 }
 
-header h2 {
-    margin: 0;
+/*LOGO*/
+
+.logo-link {
+    text-decoration: none;
+    color: white;
+}
+.logo-text {
     font-size: 1.6rem;
-    margin-right: 40px;
+    font-weight: bold;
 }
-header div{
-    text-align: left ;
-}
-header nav {
+/*NAV*/
+.nav-list {
+    list-style: none;
     display: flex;
     gap: 20px;
-    align-items: center;
+    margin: 0;
+    padding: 0;
 }
-header nav a {
-    color: white;
+
+.nav-link {
     text-decoration: none;
+    color: white;
     font-size: 0.95rem;
     transition: 0.2s;
 }
-header nav a:hover {
+.nav-link:hover {
     color: #f0c040;
 }
+/*HEADER ACTIONS*/
 
-/*Button*/
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+/*CART*/
+.cart-link {
+    text-decoration: none;
+    color: white;
+}
+.cart-count {
+    background: #f0c040;
+    color: #222;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    margin-left: 5px;
+}
 
-#logoutBtn {
+/*AUTH LINKS*/
+
+.auth-links {
+    display: flex;
+    gap: 10px;
+}
+.register-link, .login-link{
+    text-decoration: none;
+    color: white;
+    font-size: 0.9rem;
+}
+
+/*LOGOUT*/
+.logout-btn {
     background: #f44336;
     border: none;
-    color: #ccc;
+    color: white;
     padding: 6px 12px;
     border-radius: 5px;
     cursor: pointer;
 }
 
-/*Footer*/
+/*UTILIDAD*/
+.hidden {
+    display: none;
+}
+
+/* =========================
+    FOOTER
+========================= */
+
 footer {
     background: #222;
     color: #ccc;
     text-align: center;
     padding: 15px;
-    margin-top: 40px;
 }
 
 footer p {
     margin: 0;
     font-size: 0.9rem;
 }
+/* =========================
+    LOGIN
+========================= */
 
-
-/*Esto es el estilo de login*/
 .login-container {
     display: flex;
     justify-content: center;
@@ -90,9 +143,11 @@ footer p {
     padding: 30px;
     border-radius: 10px;
     width: 300px;
+
     display: flex;
     flex-direction: column;
     gap: 10px;
+
     box-shadow: 0 0 10px rgba(0,0,0,0.1);
 }
 
@@ -115,9 +170,11 @@ footer p {
     border-radius: 5px;
     transition: 0.3s;
 }
-.login-box button:hover{
+
+.login-box button:hover {
     background: #444;
 }
+
 .error {
     color: red;
     font-size: 0.9rem;

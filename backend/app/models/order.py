@@ -1,4 +1,5 @@
 from sqlalchemy import Column, Integer, DECIMAL, ForeignKey
+from sqlalchemy.orm import relationship
 from ..db.base import Base
 
 class Order(Base):
@@ -7,3 +8,5 @@ class Order(Base):
     id = Column(Integer, primary_key=True)
     user_id = Column(Integer, ForeignKey("users.id"))
     total = Column(DECIMAL(10,2), nullable=False)
+
+    items = relationship("OrderItem", backref="order")

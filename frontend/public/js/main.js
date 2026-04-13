@@ -16,6 +16,6 @@ document.addEventListener("DOMContentLoaded", async () => {
         cargarCart();
     }else if (path.includes("login.html")){
         initLogin();
-    }else if (path.includes("registre.html"))
+    }else if (path.includes("register.html"))
         initRegister();
 });

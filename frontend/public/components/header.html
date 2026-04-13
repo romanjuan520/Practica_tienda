@@ -1,14 +1,37 @@
 <header>
-    <h2>Tienda</h2>
-
-    
-        <nav>
-            <a href="index.html">Inicio</a>
-            <a href="cart.html">Carrito</a>
-            <a href="login.html">Login</a>
-            <a href="admin.html">Admin</a>
-            <a href="register.html">Registrase</a>
-            <button id="logoutBtn">Logout</button>
+    <div class="header-container">
+        <!--Logo-->
+        <div class="header-logo">
+            <a href="../pages/index.html">
+                <span class="logo-text">Tienda</span>
+            </a>
+        </div>
+        <nav class="header-nav">
+            <ul class="nav-list">
+                <li class="nav-item">
+                    <a href="../pages/index.html" class="nav-link">
+                        Inicio
+                    </a>
+                </li>
+            </ul>
         </nav>
+        
+        <!--USER ACTIONS-->
+        <div class="header-actions">
+            <a href="../pages/cart.html" class="cart-link">
+                Carrito
+                <span id="cart-count" class="cart-count">0</span>
+            </a>
 
+            <a href="../pages/register.html" class="register-link">
+                Registrase
+            </a>
+
+            <a href="../pages/login.html" class="login-link" id="login-btn">
+                Login
+            </a>
+            <button id="logout-btn" class="logout-btn hidden">Cerrar Sesión</button>
+        </div>
+
+    </div>
 </header>
