@@ -6,6 +6,8 @@ from fastapi.staticfiles import StaticFiles
 from app.db.database import engine
 from app.db.base import Base
 
+from .routers import users
+
 import app.models.product
 import app.models.category
 import app.models.order
@@ -30,3 +32,4 @@ app.include_router(auth.router)
 app.include_router(products.router)
 app.include_router(admin.router)
 app.include_router(orders.router)
+app.include_router(users.router)

@@ -56,3 +56,20 @@ export async function putData(endpoint, data) {
         return null;
     }
 }
+
+export async function getProfile() {
+    const token = localStorage.getItem("access_token");
+
+    const response = await fetch("http://127.0.0.1:8000/users/me", {
+        method: "GET",
+        headers: {
+            "Authorization": `Bearer ${token}`,
+            "Content-Type": "application/json"
+        }
+    });
+    if (!response.ok){
+        throw new Error("Error al cargar el perfil");
+
+    }
+    return await response.json();
+}

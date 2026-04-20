@@ -1,22 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin - Crear producto</title>
+    <link rel="stylesheet" href="../style/style.css">
+</head>
 <body>
+    
     <div id="header"></div>
 
     <main>
         <h2>Admin Dashboard</h2>
+        <form id="product-form">
+            <input type="text" id="name" placeholder="Nombre" required>
+            <input type="number" id="price" placeholder="Precio" required>
+            <input type="text" id="imagen" placeholder="Imagen" required>
+            <input type="number" id="stock" placeholder="Stock" required>
 
-        <input id="name" placeholder="Nombre">
-        <input id="price" placeholder="Precio">
+            <button id="createBtn">Crear producto</button>
+
+        </form>
+
+        <p id="msg"></p>
 
         <hr>
-        <button id="createBtn">Crear producto</button>
+        
     </main>
     <div id="footer"></div>
 
-    <script type="module">
-        import { initLayout } from "../js/main.js";
-        import { initAdmin } from "../js/pages/admin.js";
+    <script type="module" src="../js/main.js"></script>
 
-        await initLayout();
-        initAdmin();
-    </script>
 </body>
+</html>
+

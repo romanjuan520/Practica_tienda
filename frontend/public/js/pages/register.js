@@ -20,7 +20,7 @@ export function initRegister(){
         const apellido = document.getElementById("apellido").value;
         const email = document.getElementById("email").value;
         const password = document.getElementById("password").value;
-
+        const role = document.getElementById("role").value
         if (!validarPassword(password)){
             error.textContent = "La contraceñsa debe tener minimo 6 caracteres, mayúsculas, minúsculas, números y símbolos.";
         return;
@@ -30,7 +30,8 @@ export function initRegister(){
                 nombre: username,
                 apellido: apellido,
                 email,
-                password
+                password,
+                role
             });
 
             alert("Usuario registrado correctamente");

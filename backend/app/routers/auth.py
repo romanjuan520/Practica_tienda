@@ -18,5 +18,9 @@ def login(user: UserLogin, db: Session = Depends(get_db)):
     if not db_user:
         raise HTTPException(status_code=400, detail="Credenciales incorrectos")
     
-    token = create_access_token({"id": db_user.id, "role": db_user.role})
-    return {"access_token": token}
+    token = create_access_token({"id": db_user.id, "role": db_user.role, "nombre": db_user.nombre})
+    return {"access_token": token,
+            "user": {
+                "nombre": db_user.nombre,
+                "email": db_user.email
+            }}
